@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="../CSS/PicrossPageStyle.css">
+        <link rel="stylesheet" href="../CSS/NavBarStyle.css">
+    </head>
+    <body>
+        <script src="../JS/PicrossPage.js" async defer></script>
+        <script src="../JS/Classes.js" async defer></script>
+        <script src="../JS/PicrossTable.js" async defer></script>
+
+        <section id="NavigationBar">
+            <ul>
+                <li><a href="Main.html">Main</a></li>
+                <li><a href="HowToPlay.html">How to Play</a></li>
+                <li><a href="PicrossPage.html">Play</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+        </section>
+<!-- 
+        <section id="TimerSection">
+            <div class="Timer">
+                <p class="TimerText">00:00</p>
+            </div>
+        </section> -->
+
+        <section id="GameStatsSection">
+            <div class="GameStats">
+                <p class="StatHeader">Time Elapsed</p>
+                <p class="TimerText">00:00</p>
+                <p class="StatHeader">Turns</p>
+                <p class="StatData" id="TurnData">0</p>
+                <p class="StatHeader">Tiles Remaining</p>
+                <p class="StatData" id="TilesRemainingData">0</p>
+                <p class="StatHeader">Mistakes</p>
+                <p class="StatData" id="MistakeData">0</p>
+                <button type="button" onclick="ShowHintTile()">Show Hint</button>
+            </div>
+        </section>
+
+        <section id="GridOptionsSection">
+            <div class="GridForm">
+
+                <form class="ArcadeModeSettings">
+                    <h3>Arcade Mode Settings</h3>
+                    Number of Levels <br>
+                    <input type="number" id="numberOfLevels">
+                    <br>
+                    Max Width <br>
+                    <input type="number" id="maxWidth">
+                    <br>
+                    Max Height <br>
+                    <input type="number" id="maxHeight">
+                    <br>
+                    Minimum Width <br>
+                    <input type="number" id="minWidth">
+                    <br>
+                    Minimum Height <br>
+                    <input type="number" id="minHeight">
+                    <br>
+                    <button type="button" onclick="StartArcadeMode()">Arcade Mode</button>
+                    <br>
+                </form>
+
+                <form class="GridDimensions">
+                    <h3>Custom Mode Settings</h3>
+                    Grid Width<br>
+                    <input type="number" id="gridWidth">
+                    <br>
+                    Grid Height<br>
+                    <input type="number" id="gridHeight">
+                    <br>
+                    <button type="button" onclick="CreateGrid()">Create Grid</button>
+                </form>
+
+                <form class="GridImageForm">
+                    <h3>Image Mode Settings</h3>
+                    Choose Image<br> 
+                    <input type="file" id="imageInput">
+                    <br>
+                    <button type="button" onclick="CreateGridFromImage()">Create Grid From Image</button>
+                </form>
+
+                <form class="GridColorForm">
+                    <h3>Color Settings</h3>
+                    Tile Color: <input id = "TileColor" type="color">
+                    <br>
+                    Border Color: <input id="BorderColor" type="color">
+                    <br>
+                    <button type="button" onclick="UpdateGridColor()">Change Colors</button>
+                </form>
+
+            </div>
+        </section>
+
+    </body>
+</html>

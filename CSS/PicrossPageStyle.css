@@ -1,0 +1,127 @@
+form{
+    border-style: solid;
+    border-color: black;
+    max-width: 100%;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* section#PicrossTableSection{
+
+} */
+
+section#GridOptionsSection{
+    width: 15%;
+    float: left;
+    margin-right: 30px;
+}
+
+section#GameStatsSection{
+    border-style: solid;
+    border-color: black;
+    text-align: center;
+    padding: 5px;
+    float: right;
+}
+
+input{
+    width: 20%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+button{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+table.PicrossTable{
+    border-collapse: collapse;
+    /* border-style: solid;
+    border-color: black; */
+    table-layout: fixed;
+    font-size: 20px;
+}
+
+p.StatHeader{
+    font-size: 16px; 
+    font-weight: bold;
+}
+
+p.StatData{
+    font-size: 14px;
+}
+
+td.NumRowTop{
+    border-left: solid;
+    border-right: solid;
+    border-color: black;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+td.NumRowLeft{
+    border-top: solid ;
+    border-bottom: solid ;
+    border-color:black;
+    text-align: right;
+    font-weight: bold;
+    padding: 12px;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+/* This is for the empty cell at the top-left of the picross board. */
+td.emptyCell{
+   
+}
+
+/*
+All the following styles get swapped out in the PicrossTable.js file when a user clicks
+a tile or when the user wins the game
+*/
+td.notRevealed {
+    border-collapse: collapse;
+    border-style: solid;
+    padding: 15px;
+    width: 32px;
+    height: 32px;
+    background-color: grey;
+}
+
+/* td.notRevealed:hover {
+    background-color: lightgray;
+} */
+
+td.mistakeTile{
+    border-collapse: collapse;
+    border-style: solid;
+    padding: 15px;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../images/MistakeIcon.png");
+}
+
+td.notMistakeTile{
+    border-collapse: collapse;
+    border-style: solid;
+    padding: 15px;
+    width: 32px;
+    height: 32px;
+    background-color: lightblue;
+}
+
+td.victoryTile{
+    border-collapse: collapse;
+    border-style: solid;
+    padding: 15px;
+    width: 32px;
+    height: 32px;
+    background-color: black;
+}
