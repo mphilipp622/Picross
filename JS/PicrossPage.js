@@ -14,6 +14,31 @@ var currentLevel = 0;
 var isArcadeMode = false;
 var isTimeAttackMode = false;
 
+function SaveLevelData()
+{
+    let tileString = '"tiles" : [';
+
+    for(i = 0; i < grid.GetWidth(); i++)
+    {
+        for( j = 0; j < grid.GetHeight(); j++)
+        {
+            if(i == grid.GetWidth() - 1 && j == grid.GetHeight() - 1)
+                // Used for last tile in the list. Closes the array.
+                tileString += '{ "row" : ' + j.toString() + ', "column" : ' + i.toString() + ', "isMistake" : ' + grid.GetTile(j, i).GetIsMistake() + '] } ]';
+            else 
+                // Put a comma at the end to separate tile entries
+                tileString += '{ "row" : ' + j.toString() + ', "column" : ' + i.toString() + ', "isMistake" : ' + grid.GetTile(j, i).GetIsMistake() + '] }, ';
+
+        }
+    }
+
+    let data = '{ "width" :' + grid.GetWidth() + ', "height" : ' + grid.GetHeight() + 
+    ', ' + tileString + ', "borderColor" : "' + document.getElementById("BorderColor").value.toString() + '", "tileColor" : "' + document.getElementById("TileColor").value.toString() + '"}';
+    
+    JSON.stringify(data);
+    console.log(data);
+}
+
 function CreateGrid()
 {
     let newWidth = document.getElementById("gridWidth").value;
