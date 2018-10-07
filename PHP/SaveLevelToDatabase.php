@@ -1,13 +1,7 @@
 <?php
 
-if(isset($_GET['json']))
-{
-    $jsonInput = json_decode($_GET['json'], true);
-}
-else
-{
-    return;
-}
+
+$jsonInput = json_decode(file_get_contents('php://input'), true);
 
 $servername = "localhost";
 $username = "root";

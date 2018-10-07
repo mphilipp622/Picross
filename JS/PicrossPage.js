@@ -14,81 +14,11 @@ var currentLevel = 0;
 var isArcadeMode = false;
 var isTimeAttackMode = false;
 
-var request;
-
-function SaveLevelData()
-{
-    let newGUID = GetGUID();
-    // console.log(newGUID);
-
-    let data = {
-        "levelID" : newGUID,
-        "width" : grid.GetWidth(),
-        "height": grid.GetHeight(),
-        "tiles": [],
-        "borderColor": hexToRGB(document.getElementById("BorderColor").value, 1.0),
-        "tileColor": hexToRGB(document.getElementById("TileColor").value, 1.0)
-    }
-
-
-    for(i = 0; i < grid.GetWidth(); i++)
-    {
-        for( j = 0; j < grid.GetHeight(); j++)
-        {
-            let newString = '{ "row" : ' + j.toString() + ', "column" : ' + i.toString() + ', "isMistake" : ' + grid.GetTile(j, i).GetIsMistake() + ' }'
-            data.tiles.push(newString);
-        }
-    }
-
-    let jsonData = JSON.stringify(data);
-    console.log(jsonData);
-
-    request= new XMLHttpRequest();
-    request.onreadystatechange = callback;
-    request.open("GET", "../PHP/SaveLevelToDatabase.php?json=" + jsonData, true);
-    // request.setRequestHeader("Content-type", "application/json");
-    request.send(null);
-
-    // JSON.stringify(data);
-    // console.log(data);
-}
-
-// GUID creates a unique value that will be used for levelID's. Based on implementations found online.
-function GetGUID() {
-    function s4() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    }
-    return s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
-  }
-
-function hexToRGB(hex, alpha) {
-    var r = parseInt(hex.slice(1, 3), 16),
-        g = parseInt(hex.slice(3, 5), 16),
-        b = parseInt(hex.slice(5, 7), 16);
-
-    if (alpha) {
-        return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
-    } else {
-        return "rgb(" + r + ", " + g + ", " + b + ")";
-    }
-}
-
-function callback (){
-    if(request.readyState == 4)
-    {
-        console.log(request.responseText);
-        // let jsobj = JSON.parse(request.responseText);
-        // console.log(JSON.stringify(jsobj));
-    }
-}
-
 function CreateGrid()
 {
-    let newWidth = document.getElementById("gridWidth").value;
-    let newHeight = document.getElementById("gridHeight").value;
-    grid = new Grid(newWidth, newHeight);
+    let selection = document.getElementById("gridDimension");
+    let newDimension = parseInt(selection.options[selection.selectedIndex].value);
+    grid = new Grid(newDimension, newDimension);
 
     CreateTable();
     CreateTableOnClickFunctionality();

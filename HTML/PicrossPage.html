@@ -10,6 +10,7 @@
         <script src="../JS/PicrossPage.js" async defer></script>
         <script src="../JS/Classes.js" async defer></script>
         <script src="../JS/PicrossTable.js" async defer></script>
+        <script src="../JS/Database.js" async defer></script>
 
         <section id="NavigationBar">
             <ul>
@@ -31,8 +32,8 @@
                 <p class="StatHeader">Mistakes</p>
                 <p class="StatData" id="MistakeData">0</p>
                 <button type="button" onclick="ShowHintTile()">Show Hint</button>
-                <br>
-                <button type="button" onclick="SaveLevelData()">Save Levels</button>
+                <!-- <br>
+                <button type="button" onclick="SaveLevelData()">Save Levels</button> -->
             </div>
         </section>
 
@@ -62,11 +63,10 @@
 
                 <form class="GridDimensions">
                     <h3>Custom Mode Settings</h3>
-                    Grid Width<br>
-                    <input type="number" id="gridWidth">
-                    <br>
-                    Grid Height<br>
-                    <input type="number" id="gridHeight">
+                    <select id="gridDimension">
+                        <option value="7">7x7</option>
+                        <option value="13">13x13</option>
+                    </select>
                     <br>
                     <button type="button" onclick="CreateGrid()">Create Grid</button>
                 </form>
