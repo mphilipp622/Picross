@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="../CSS/NavBarStyle.css">
+        <link rel="stylesheet" href="../CSS/CreateAccountStyle.css">
+    </head>
+    <body>
+        <script src="../JS/CreateAccount.js" async defer></script>
+
+        <section id="NavigationBar">
+            <ul>
+                <li><a href="Main.html">Main</a></li>
+                <li><a href="HowToPlay.html">How to Play</a></li>
+                <li><a href="PicrossPage.html">Play</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+        </section>
+
+        <section id="FormSection">
+            <form>
+                <fieldset>
+                    <legend  align = "center"><h2>Create New Account</h2></legend>
+
+                    <label for="FirstName">First Name:</label>
+                    <input type="text" id = "FirstName"><br>
+
+                    <label for="LastName">Last Name:</label>
+                    <input type="text" id = "LastName"><br>
+
+                    <label for="Age">Age:</label>
+                    <input type="number" id="Age"><br>
+
+                    <label for="Gender">Gender:</label>
+                    <select id = "Gender">
+                        <option value = "Male">Male</option>
+                        <option value = "Female">Female</option>
+                        <option value = "Other">Other</option>
+                    </select> <br>
+
+                    <label for="Location">Location:</label>
+                    <input type = "text" id="Location"><br>
+
+                    <button type="submit" value = "Submit">Submit</button>
+                </fieldset>
+            </form>
+        </section>
+    </body>
+</html>

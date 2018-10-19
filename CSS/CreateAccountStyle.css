@@ -1,0 +1,26 @@
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 150px;
+    padding-bottom: 10px;
+    font-size: 24px;
+    padding-top: 5px;
+}
+input, select {
+  display: inline-block;
+  float: left;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+fieldset{
+    width: 25vw;
+    margin: auto;
+}
+
+button{
+    display: inline-block;
+    float: left;
+    clear: left;
+}
