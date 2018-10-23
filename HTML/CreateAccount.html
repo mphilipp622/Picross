@@ -4,6 +4,8 @@
         <title></title>
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
         <link rel="stylesheet" href="../CSS/CreateAccountStyle.css">
+        
+        <script src = "../JS/jquery-3.3.1.min.js" async defer></script>
     </head>
     <body>
         <script src="../JS/CreateAccount.js" async defer></script>
@@ -49,7 +51,10 @@
                     <label for="Location">Location:</label>
                     <input type = "text" id="Location"><br>
 
-                    <button type="submit" value = "Submit">Submit</button>
+                    <label for = "Avatar">Avatar:</label>
+                    <input type = "file" id = "Avatar"><br>
+
+                    <button type="button" value = "Submit" onclick = "CreateNewUser()">Submit</button>
                 </fieldset>
             </form>
         </section>
