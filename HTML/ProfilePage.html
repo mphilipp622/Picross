@@ -2,10 +2,14 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="../CSS/AboutStyle.css">
+        <link rel="stylesheet" href="../CSS/ProfilePageStyle.css">
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
+
+        <script src = "../JS/jquery-3.3.1.min.js" async defer></script>
     </head>
     <body>
+        <script src = "../JS/LoginData.js" async defer></script>
+        <script src="../JS/ProfilePage.js" async defer></script>
 
         <!-- Nav Bar -->
         <section class="NavBar">
@@ -18,11 +22,19 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">Change Picture</a>
                     <a href="ProfilePage.html">View Profile</a>
                     <a href="CreateAccount.html">Create Account</a>
                 </div>
             </div>
+        </section>
+
+        <section id = "UserInfo">
+            <p class = "userData">Username: </p>
+            <p class = "userData">First Name: </p>
+            <p class = "userData">Last Name: </p>
+            <p class = "userData">Age: </p>
+            <p class = "userData">Gender: </p>
+            <p class = "userData">Location: </p>
         </section>
 
     </body>

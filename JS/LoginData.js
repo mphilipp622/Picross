@@ -1,0 +1,2 @@
+var currentUser = null;
+
