@@ -5,11 +5,16 @@
         <link rel="stylesheet" href="../CSS/ProfilePageStyle.css">
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
 
-        <script src = "../JS/jquery-3.3.1.min.js" async defer></script>
+        <script type = "text/javascript" src = "../JS/jquery-3.3.1.min.js" async defer></script>
+        <script src = "../JS/ActiveUserData.js" async defer></script>
+
     </head>
     <body>
-        <script src = "../JS/LoginData.js" async defer></script>
-        <script src="../JS/ProfilePage.js" async defer></script>
+        <script src = "../JS/ProfilePage.js" defer></script>
+
+        <script>
+            lastPageVisited = "../HTML/ProfilePage.html";
+        </script>
 
         <!-- Nav Bar -->
         <section class="NavBar">
@@ -37,5 +42,6 @@
             <p class = "userData">Location: </p>
         </section>
 
+        <button onclick = "GetProfileInfo()">Click</button>
     </body>
 </html>

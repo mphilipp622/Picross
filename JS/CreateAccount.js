@@ -36,9 +36,6 @@ function CreateNewUser()
     // Send form to server to upload image
     UploadAvatarToServer(formData);
 
-    currentUser = username;
-    window.location.href = "../HTML/Main.html";
-
 }
 
 function SaveToDB(formData)
@@ -75,8 +72,22 @@ function UploadAvatarToServer(formData)
         error: function(data) {
           console.log("Error");
         },
-        complete: function(data) {}
+        complete: function(data) {
+          // After file uploads, update the active user and go to main page.
+          UpdateActiveUser(formData);
+          window.location.href = lastPageVisited;
+        }
       });
+}
+
+function UpdateActiveUser(formData)
+{
+  currentUserName = formData.get("username");
+  currentFirstName = formData.get("firstName");
+  currentLastName = formData.get("lastName");
+  currentGender = formData.get("gender");
+  currentLocation = formData.get("location");
+  currentAge = formData.get("age");
 }
 
 // GUID creates a unique value that will be used for levelID's. Based on implementations found online.

@@ -15,14 +15,12 @@ if (mysqli_connect_errno())
 }
 
 // $_GET['username'] should give this code the currently active username on the site
-$query = "SELECT * FROM players WHERE username = '" . $_GET['username'] . "'";
+$query = "SELECT * FROM player WHERE username = '" . $_GET["username"] . "'";
 
-$sth = mysqli_query($query);
+$sth = mysqli_query($conn, $query);
 $rows = array();
 while($r = mysqli_fetch_assoc($sth)) {
     $rows[] = $r;
 }
 
 echo json_encode($rows);
-
->

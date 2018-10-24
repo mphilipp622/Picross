@@ -2,15 +2,13 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="../CSS/HowToPlayStyle.css">
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
+        <link rel="stylesheet" href="../CSS/LoginStyle.css">
+        <script src = "../JS/jquery-3.3.1.min.js"></script>
         <script src = "../JS/ActiveUserData.js"></script>
-
     </head>
     <body>
-        <script>
-            lastPageVisited = "../HTML/HowToPlay.html";
-        </script>
+        <script src = "../JS/LoginPage.js" async defer></script>
 
         <section class="NavBar">
             <a href="Main.html">Main</a>
@@ -28,17 +26,14 @@
             </div>
         </section>
 
-        <section id="HowToPlay">
-            <div class="WhatIsPicross">
-                <h2>What is Picross?</h2>
-                <p>I recommend referring to the <a href="https://en.wikipedia.org/wiki/Nonogram">Wikipedia Article</a> about nonograms to better understand the basics of Picross.</p>
-            </div>
-
-            <div class="Controls">
-                <h2>Controls</h2>
-                <p><b>Arcade Mode:</b> When this button is pressed, the game will randomly generated</p>
-            </div>
-        </section>
+        <form>
+            <fieldset>
+                <legend>Login</legend>
+                Username: <input type = "text" id = "username"><br>
+                Password: <input type = "password" id = "password"><br>
+                <button type = "button" onclick = "Login()">Submit</button>
+            </fieldset>
+        </form>
 
     </body>
 </html>
