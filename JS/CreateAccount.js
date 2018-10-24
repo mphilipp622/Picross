@@ -14,6 +14,7 @@ function CreateNewUser()
 
     var formData = new FormData();
 
+    formData.append("userID", GetGUID());
     formData.append("firstName", firstName);
     formData.append("lastName", lastName); // number 123456 is immediately converted to a string "123456"
     formData.append("age", age);
@@ -52,8 +53,14 @@ function UploadAvatarToServer(formData)
       });
 }
 
-function ImageCallback()
+// GUID creates a unique value that will be used for levelID's. Based on implementations found online.
+function GetGUID() 
 {
-    if(uploadImageRequest.readyState == 4)
-        console.log(uploadImageRequest.responseText);
+    function s4() 
+    {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
 }
