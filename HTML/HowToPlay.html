@@ -7,10 +7,8 @@
         <script src = "../JS/ActiveUserData.js"></script>
 
     </head>
-    <body>
-        <script>
-            lastPageVisited = "../HTML/HowToPlay.html";
-        </script>
+    <body onload = "SetCurrentPage('../HTML/HowToPlay.html')">
+        
 
         <section class="NavBar">
             <a href="Main.html">Main</a>
@@ -22,6 +20,7 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
+                    <a href = "Login.html">Login</a>
                     <a href="ProfilePage.html">View Profile</a>
                     <a href="CreateAccount.html">Create Account</a>
                 </div>

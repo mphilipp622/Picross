@@ -7,14 +7,12 @@
         <script src = "../JS/ActiveUserData.js"></script>
 
     </head>
-    <body>
+    <body onload = "SetCurrentPage('../HTML/PicrossPage.html')">
         <script src="../JS/PicrossPage.js" async defer></script>
         <script src="../JS/Classes.js" async defer></script>
         <script src="../JS/PicrossTable.js" async defer></script>
         <script src="../JS/Database.js" async defer></script>
-        <script>
-                lastPageVisited = "../HTML/PicrossPage.html";
-        </script>
+       
 
         <section class="NavBar">
             <a href="Main.html">Main</a>
@@ -26,6 +24,7 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
+                    <a href = "Login.html">Login</a>
                     <a href="ProfilePage.html">View Profile</a>
                     <a href="CreateAccount.html">Create Account</a>
                 </div>

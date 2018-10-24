@@ -5,12 +5,11 @@
         <link rel="stylesheet" href="../CSS/AboutStyle.css">
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
         <script src = "../JS/ActiveUserData.js" ></script>
+
     </head>
-    <body>
+    <body onload = "SetCurrentPage('../HTML/About.html')">
         
-        <script>
-            lastPageVisited = "../HTML/About.html";
-        </script>
+        
 
         <section class="NavBar">
             <a href="Main.html">Main</a>
@@ -22,6 +21,7 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
+                    <a href = "Login.html">Login</a>
                     <a href="ProfilePage.html">View Profile</a>
                     <a href="CreateAccount.html">Create Account</a>
                 </div>
