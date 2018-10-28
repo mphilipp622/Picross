@@ -6,11 +6,11 @@
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
 
         <script type = "text/javascript" src = "../JS/jquery-3.3.1.min.js" async defer></script>
-        <script src = "../JS/ActiveUserData.js" async defer></script>
+        <!-- <script src = "../JS/ActiveUserData.js" async defer></script> -->
+        <script src = "../JS/ProfilePage.js" async defer></script>
     </head>
-    <body onload = "SetCurrentPage('../HTML/ProfilePage.html')">
-        <script src = "../JS/ProfilePage.js" defer></script>
-
+    <body onload = "GetProfileInfo()">
+        
         <!-- Nav Bar -->
         <section class="NavBar">
             <a href="Main.html">Main</a>
@@ -30,12 +30,12 @@
         </section>
 
         <section id = "UserInfo">
-            <p class = "userData">Username: </p>
-            <p class = "userData">First Name: </p>
-            <p class = "userData">Last Name: </p>
-            <p class = "userData">Age: </p>
-            <p class = "userData">Gender: </p>
-            <p class = "userData">Location: </p>
+            <p class = "userData" id = "username">Username: </p>
+            <p class = "userData" id = "firstName">First Name: </p>
+            <p class = "userData" id = "lastName">Last Name: </p>
+            <p class = "userData" id = "age">Age: </p>
+            <p class = "userData" id = "gender">Gender: </p>
+            <p class = "userData" id = "location">Location: </p>
         </section>
 
         <button onclick = "GetProfileInfo()">Click</button>

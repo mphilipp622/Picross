@@ -1,38 +1,18 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbName = "picross";
+if(isset($_SESSION['username']))
+{ // OR isset($_SESSION['user']), if array
+// Logged In
+    // $data = array($_SESSION['username'], 
+    //               $_SESSION['firstName'], 
+    //               $_SESSION['lastName'],
+    //               $_SESSION['age'],
+    //               $_SESSION['gender'],
+    //               $_SESSION['location'] );
 
-// Create connection
-$conn = new mysqli($servername, $username, $password,$dbName);
-
-// Check connection
-if (mysqli_connect_errno())
+    echo json_encode($_SESSION['username']);
+}
+else
 {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    echo "Please Login";
 }
-
-// $_GET['username'] should give this code the currently active username on the site
-$query = "SELECT * FROM player WHERE username = '" . $_GET["username"] . "' AND password = sha1('" . $_GET["password"] . "')";
-$sth = mysqli_query($conn, $query);
-
-if(!$sth)
-{
-    echo "Password Failed";
-    return;
-}
-
-$query = "UPDATE player
-SET isActive = 1
-WHERE username = '" . $_GET["username"] . "' AND password = sha1('" . $_GET["password"] . "')";
-
-$rows = array();
-while($r = mysqli_fetch_assoc($sth)) {
-    $rows[] = $r;
-}
-
-$conn->query($query);
-
-echo json_encode($rows);
