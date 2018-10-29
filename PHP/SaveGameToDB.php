@@ -24,25 +24,20 @@ $conn = new mysqli($servername, $username, $password,$dbName);
 if (mysqli_connect_errno())
 {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    return;
 }
 
-$tileString = "";
-    foreach($jsonInput['tiles'] as &$value)
-        $tileString .= $value . ",";
-    
-$tileString = rtrim($tileString, ','); // get rid of last ,
-
 // Create the values that get inserted into SQL
-$valueString = "('" . $jsonInput['levelID'] . "', '" . $playerName . "', '" . $jsonInput['width'] . "', '" . $jsonInput['height'] .
-"', '" . $tileString . "', '" . $jsonInput['borderColor'] . "', '" . $jsonInput['tileColor'] . "')";
+$valueString = "('" . $jsonInput['gameID'] . "', '" . $playerName . "', '" . $jsonInput['gridSize'] . "', '" . $jsonInput['gameDuration'] .
+"', '" . $jsonInput['mistakes'] . "', '" . $jsonInput['score'] . "')";
 
 // make a query
-$sql = "INSERT INTO level (levelID, username, width, height, tiles, tableColor, tileColor) 
+$sql = "INSERT INTO game (gameID, username, gridSize, gameDuration, mistakes, score) 
 VALUES " . $valueString;
 
 $result = $conn->query($sql);
 
 if($result)
-    echo "Level Inserted Successfully";
+    echo "Game Inserted Successfully";
 else
     echo "Failed to Insert";

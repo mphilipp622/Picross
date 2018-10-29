@@ -146,6 +146,8 @@ function UserClickedTile(row, column)
     // set the tile's status to revealed and update remaining number of non-mistake tiles if applicable.
     grid.GetTile(row - 1, column - 1).SetTileRevealed(); 
 
+    score = (Math.max(grid.GetTotalNumberOfMistakeTiles() - mistakes, 0) / grid.GetTotalNumberOfMistakeTiles()) * 100;
+
     let hasWon = grid.HasPlayerWon(); // check to see if player's won
 
     UpdateGameStats();
@@ -157,6 +159,7 @@ function UserClickedTile(row, column)
         ChangeToVictoryColors();
         StopTimer();
         PrintVictoryMessage();
+        SaveGame();
     }
 }
 
@@ -173,7 +176,7 @@ function RemoveGridOptions()
 
 function PrintVictoryMessage()
 {
-    alert("You Win!\nFinal Time: " + GetConvertedTime());
+    alert("You Win!\nFinal Time: " + GetConvertedTime() + "\nScore: " + score.toString());
 }
 
 function ChangeToVictoryColors()

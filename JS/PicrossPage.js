@@ -7,6 +7,7 @@ var id;
 // Game Stats
 var turns = 0;
 var mistakes = 0;
+var score = 0;
 
 var levels = []; // stores grids for a level
 var currentLevel = 0;
@@ -162,4 +163,108 @@ function CreateGridFromImage()
 
     // let brightness = Math.floor(colorSum / (this.width*this.height));
 
+}
+
+function SaveGame()
+{
+    let newGUID = GetGUID();
+
+    let data = {
+        "gameID" : newGUID,
+        "gridSize": grid.GetWidth(),
+        "gameDuration": totalTime,
+        "mistakes": mistakes,
+        "score": score
+    }
+
+    let jsonData = JSON.stringify(data);
+    
+    request= new XMLHttpRequest();
+    request.onreadystatechange = GameCallback;
+    request.open("POST", "../PHP/SaveGameToDB.php", true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(jsonData);
+}
+
+function GameCallback ()
+{
+    if(request.readyState == 4)
+    {
+        if(request.responseText == "Login")
+            alert("You must be signed into an account to save a game");
+        else
+            console.log("Game Saved");
+    }
+}
+
+function SaveLevelData()
+{
+    if(grid == undefined)
+    {
+        alert("Error: you must create a grid first");
+        return;
+    }
+
+    let newGUID = GetGUID();
+
+    let data = {
+        "levelID" : newGUID,
+        "width" : grid.GetWidth(),
+        "height": grid.GetHeight(),
+        "tiles": [],
+        "borderColor": hexToRGB(document.getElementById("BorderColor").value, 1.0),
+        "tileColor": hexToRGB(document.getElementById("TileColor").value, 1.0)
+    }
+
+    for(i = 0; i < grid.GetWidth(); i++)
+    {
+        for( j = 0; j < grid.GetHeight(); j++)
+        {
+            let newString = '{ "row" : ' + j.toString() + ', "column" : ' + i.toString() + ', "isMistake" : ' + grid.GetTile(j, i).GetIsMistake() + ' }'
+            data.tiles.push(newString);
+        }
+    }
+
+    let jsonData = JSON.stringify(data);
+    
+    request= new XMLHttpRequest();
+    request.onreadystatechange = LevelCallback;
+    request.open("POST", "../PHP/SaveLevelToDatabase.php", true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(jsonData);
+}
+
+function LevelCallback ()
+{
+    if(request.readyState == 4)
+    {
+        if(request.responseText == "Login")
+            alert("You must be signed into an account to save a level");
+        else
+            alert("Level Saved");
+    }
+}
+
+function hexToRGB(hex, alpha) 
+{
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+
+    if (alpha) 
+        return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+    else 
+        return "rgb(" + r + ", " + g + ", " + b + ")";
+}
+
+// GUID creates a unique value that will be used for levelID's. Based on implementations found online.
+function GetGUID() 
+{
+    function s4() 
+    {
+        return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
 }

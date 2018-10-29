@@ -30,14 +30,17 @@
         </section>
 
         <section id = "UserInfo">
-            <p class = "userData" id = "username">Username: </p>
+            <img class = "userImage" id = "avatar"><br>
+
+            <input type = "file" id = "Avatar" name = "Avatar"><br>
+            <button type="button" value = "Submit" onclick = "UpdateImage()">Submit</button>
+
+            <p class = "userData">Username: <span id = "username"></span></p>
             <p class = "userData" id = "firstName">First Name: </p>
             <p class = "userData" id = "lastName">Last Name: </p>
             <p class = "userData" id = "age">Age: </p>
             <p class = "userData" id = "gender">Gender: </p>
             <p class = "userData" id = "location">Location: </p>
         </section>
-
-        <button onclick = "GetProfileInfo()">Click</button>
     </body>
 </html>

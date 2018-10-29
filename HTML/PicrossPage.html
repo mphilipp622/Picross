@@ -4,14 +4,12 @@
         <title></title>
         <link rel="stylesheet" href="../CSS/PicrossPageStyle.css">
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
-        <script src = "../JS/ActiveUserData.js"></script>
 
     </head>
-    <body onload = "SetCurrentPage('../HTML/PicrossPage.html')">
+    <body >
         <script src="../JS/PicrossPage.js" async defer></script>
         <script src="../JS/Classes.js" async defer></script>
         <script src="../JS/PicrossTable.js" async defer></script>
-        <script src="../JS/Database.js" async defer></script>
        
 
         <section class="NavBar">
@@ -41,7 +39,8 @@
                 <p class="StatData" id="TilesRemainingData">0</p>
                 <p class="StatHeader">Mistakes</p>
                 <p class="StatData" id="MistakeData">0</p>
-                <button type="button" onclick="ShowHintTile()">Show Hint</button>
+                <button type="button" onclick="ShowHintTile()">Show Hint</button><br>
+                <button type = "button" onclick = "SaveLevelData()">Save Level</button>
                 <!-- <br>
                 <button type="button" onclick="SaveLevelData()">Save Levels</button> -->
             </div>

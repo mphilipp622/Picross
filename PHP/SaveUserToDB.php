@@ -15,7 +15,6 @@ if (mysqli_connect_errno())
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$userID = $_POST["userID"];
 $username = $_POST["username"];
 $password = $_POST["password"];
 $firstName = $_POST["firstName"];
@@ -25,18 +24,18 @@ $gender = $_POST["gender"];
 $location = $_POST["location"];
 
 // Create the values that get inserted into SQL
-$valueString = "('" . $userID . "', '" . $username . "', sha1('" . $password . "'), '" . $firstName . "', '" . $lastName .
+$valueString = "('" . $username . "', sha1('" . $password . "'), '" . $firstName . "', '" . $lastName .
 "', '" . $age . "', '" . $gender . "', '" . $location . "')";
 
 // make a query
-$sql = "INSERT INTO player (userID, username, password, firstName, lastName, age, gender, location) 
+$sql = "INSERT INTO player (username, password, firstName, lastName, age, gender, location) 
 VALUES " . $valueString;
 
 $result = $conn->query($sql);
 
 if($result)
-    echo "Level Inserted Successfully";
+    echo "Success";
 else
-    echo "Failed to Insert";
+    echo "UsernameExists";
 
 ?>

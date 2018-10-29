@@ -63,6 +63,7 @@ class Grid
         this.height = newHeight;
         this.tiles = [];
         this.hintTiles = [];
+        this.totalMistakeTiles = 0;
 
         // will track how many non-mistake tiles are left to find
         this.tilesLeft = newWidth * newHeight; 
@@ -81,6 +82,7 @@ class Grid
                 {
                     // basically a coin flip. If we get 0 from coin flip, we specify this tile as a mistake tile.
                     this.tiles[row][column].SetIsMistake(true); 
+                    this.totalMistakeTiles++;
                     this.tilesLeft--; // subtract from the pool of non-mistake tiles.
                 }
                 else
@@ -175,6 +177,11 @@ class Grid
     GetRemainingTiles()
     {
         return this.tilesLeft;
+    }
+
+    GetTotalNumberOfMistakeTiles()
+    {
+        return this.totalMistakeTiles;
     }
 
     HasPlayerWon()
