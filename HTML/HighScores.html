@@ -2,12 +2,12 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="../CSS/HowToPlayStyle.css">
+        <link rel="stylesheet" href="../CSS/HighScoreStyle.css">
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
-
+        <script src = "../JS/jquery-3.3.1.min.js"></script>
     </head>
-    <body>
-        
+    <body onload = "GetTableData()">
+        <script src = "../JS/HighScores.js" async defer></script>
 
         <section class="NavBar">
             <a href="Main.html">Main</a>
@@ -27,16 +27,19 @@
             </div>
         </section>
 
-        <section id="HowToPlay">
-            <div class="WhatIsPicross">
-                <h2>What is Picross?</h2>
-                <p>I recommend referring to the <a href="https://en.wikipedia.org/wiki/Nonogram">Wikipedia Article</a> about nonograms to better understand the basics of Picross.</p>
-            </div>
+        <section id="Scores">
+            <table id="mainTable">
+                <tr>
+                    <th>Username</th>
+                    <th>Grid Size</th>
+                    <th onclick="GetSortedData('gameDuration')">Game Duration</th>
+                    <th>Mistakes</th>
+                    <th onclick="GetSortedData('score')">Score</th>
+                </tr>
+                <tbody id = "dynamicData">
 
-            <div class="Controls">
-                <h2>Controls</h2>
-                <p><b>Arcade Mode:</b> When this button is pressed, the game will randomly generated</p>
-            </div>
+                </tbody>
+            </table>
         </section>
 
     </body>
