@@ -53,19 +53,28 @@ function Populate()
 
 function SortData()
 {
-    $query;
-    $sortingOrder = $_POST["order"];
-    $column1 = $_POST["column1"]; // column1 should always be set if we're sorting.
-    $column2; // column2 might not be set depending on what user wants to sort.
+    $query = "SELECT * FROM game ORDER BY ";
+    // $sortingOrder = $_POST["order"];
 
-    if(isset($_POST["column2"]))
-    {
-        $column2 = $_POST["column2"];
+    // $sortingOrder = json_encode($_POST["order"]);
 
-        $query = "SELECT * FROM game ORDER BY " . $column1 . ", " . $column2 . " " . $sortingORDER . ";";
-    }
-    else
-        $query = "SELECT * FROM game ORDER BY " . $column1 . " " . $sortingOrder . ";";
+    echo $_POST["order"];
+
+    // foreach($sortingOrder as $item)
+    // {
+    //     echo $item;
+    // }
+    // $column1 = $sortingOrder["gameDuration"]
+    // $column2; // column2 might not be set depending on what user wants to sort.
+
+    // if(isset($_POST["column2"]))
+    // {
+    //     $column2 = $_POST["column2"];
+
+    //     $query = "SELECT * FROM game ORDER BY " . $column1 . ", " . $column2 . " " . $sortingORDER . ";";
+    // }
+    // else
+    //     $query = "SELECT * FROM game ORDER BY " . $column1 . " " . $sortingOrder . ";";
 
     $result = $GLOBALS["conn"]->query($query);
 
