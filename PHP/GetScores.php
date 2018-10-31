@@ -16,13 +16,13 @@ if (mysqli_connect_errno())
 }
 
 // Get the function name that's passed from HighScores.js
-$function = $_POST["function"];
+$jsonInput = json_decode(file_get_contents('php://input'), true);
 
 // Execute functionality accordingly.
-if($function == "populate")
+if($jsonInput["function"] == "populate")
     Populate();
 else
-    SortData();
+    SortData($jsonInput["sortData"]);
 
 function ReturnData($queryResult)
 {
@@ -51,30 +51,21 @@ function Populate()
     ReturnData($result);
 }
 
-function SortData()
+function SortData($sortData)
 {
+    // echo $sortData["gameDuration"] . "    " . $sortData["score"];
     $query = "SELECT * FROM game ORDER BY ";
     // $sortingOrder = $_POST["order"];
 
-    // $sortingOrder = json_encode($_POST["order"]);
+    foreach($sortData as $key => $val) 
+    {
+        if($val == "none")
+            continue;
 
-    echo $_POST["order"];
+        $query = $query . $key . " " . $val . ", ";
+    }
 
-    // foreach($sortingOrder as $item)
-    // {
-    //     echo $item;
-    // }
-    // $column1 = $sortingOrder["gameDuration"]
-    // $column2; // column2 might not be set depending on what user wants to sort.
-
-    // if(isset($_POST["column2"]))
-    // {
-    //     $column2 = $_POST["column2"];
-
-    //     $query = "SELECT * FROM game ORDER BY " . $column1 . ", " . $column2 . " " . $sortingORDER . ";";
-    // }
-    // else
-    //     $query = "SELECT * FROM game ORDER BY " . $column1 . " " . $sortingOrder . ";";
+    $query = rtrim($query, ', ');
 
     $result = $GLOBALS["conn"]->query($query);
 

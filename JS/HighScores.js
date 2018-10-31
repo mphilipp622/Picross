@@ -1,12 +1,8 @@
-
+// These are all used like a circular array for setting sorting preferences that are passed to php.
+// PHP will add each key to the ORDER BY clause with its value. We can add more columns here if we want.
 var sortOptions = ["none", "ASC", "DESC"];
-
-// Current sort works like a hashtable. The value is the index this column is at in the sortOptions array.
-var currentSort = {gameDuration : "none",
-                   score : "none" };
-
-var sortIndex = {gameDuration : 0,
-                 score : 0};
+var sortIndex = {username : 0, gridSize : 0, gameDuration : 0, mistakes : 0, score : 0 };
+var currentSort = {username : "none", gridSize : "none", gameDuration : "none", mistakes : "none", score : "none"};
 
 function PopulateTable(tableData)
 {
@@ -16,6 +12,7 @@ function PopulateTable(tableData)
     // first, clear out any previous data
     ClearTable();
 
+    // console.log(tableData);
     data = JSON.parse(tableData); // parse the json that was sent from PHP
 
     for(let i = 0; i < data.length; i++)
@@ -45,12 +42,14 @@ function ClearTable()
 
 function GetTableData()
 {
-    let formData = new FormData();
+    // let formData = new FormData();
 
     let sortSet = false;
 
+    let json;
+
     // Check current sorting to see if any sorting is set
-    for(key in currentSort)
+    for(key in sortIndex)
     {
         if(currentSort[key] != "none")
             sortSet = true;
@@ -58,28 +57,31 @@ function GetTableData()
 
     if(sortSet)
     {
-        formData.append("function", "sort");
-        formData.append("order", JSON.stringify(currentSort));
+        // formData.append("function", "sort");
+        json = {function : "sort", sortData : currentSort};
+        // for(let key in currentSort)
+            // Iterate over our sorting options and add them to the form.
+            // formData.append(key, sortOptions[currentSort[key]]);
     }
     else
-        formData.append("function", "populate");
+        json = {function : "populate"};
+        // formData.append("function", "populate");
 
     $.ajax({
         url : '../PHP/GetScores.php', // your php file
         type : 'POST', // type of the HTTP request
-        data : formData,
-        contentType: false,
+        data : JSON.stringify(json),
+        contentType: "application/json",
         cache: false,
         processData: false,
         success : function(data)
         {
-            console.log(data);
             if(data == "NoData")
             {
                 alert("No data to show");
                 return;
             }
-            // console.log(data);
+
             PopulateTable(data);
         }
      });
@@ -87,11 +89,8 @@ function GetTableData()
 
 function GetSortedData(columnName)
 {
-    // set the next sorting mode. Circles the array in this order: none, ASC, DESC    
+    // set the next sorting mode. Circles the array in this order: none, ASC, DESC
+    currentSort[columnName] = sortOptions[(++sortIndex[columnName]) % sortOptions.length];
     
-    sortIndex[columnName] = (++sortIndex[columnName]) % sortOptions.length;
-    currentSort[columnName] = sortOptions[sortIndex[columnName]];
-
     GetTableData();
-
 }
