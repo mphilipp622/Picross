@@ -26,16 +26,18 @@ if (mysqli_connect_errno())
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$tileString = "";
+$tileString = "{\"tiles\" : [";
     foreach($jsonInput['tiles'] as &$value)
         $tileString .= $value . ",";
-    
+
 $tileString = rtrim($tileString, ','); // get rid of last ,
+$tileString .= "]}";
 
 // Create the values that get inserted into SQL
 $valueString = "('" . $jsonInput['levelID'] . "', '" . $playerName . "', '" . $jsonInput['width'] . "', '" . $jsonInput['height'] .
 "', '" . $tileString . "', '" . $jsonInput['borderColor'] . "', '" . $jsonInput['tileColor'] . "')";
 
+echo $valueString;
 // make a query
 $sql = "INSERT INTO level (levelID, username, width, height, tiles, tableColor, tileColor) 
 VALUES " . $valueString;

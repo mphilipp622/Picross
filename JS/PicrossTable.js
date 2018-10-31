@@ -98,6 +98,93 @@ function CreateTable()
     document.body.appendChild(newSection);
 }
 
+function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
+{
+    // newTiles = JSON.parse(newTiles);
+    // console.log(newTiles);
+    let newGrid = new GridDB(newSize, newTiles);
+
+    let newTable = document.createElement("table");
+    newTable.className = "levelSection";
+
+    let newTBody = document.createElement("tbody");
+
+    let rowHeader = document.createElement("tr");
+
+    rowHeader.innerHTML += '<td class="emptyCell"></td>'; // create blank square
+
+    // Initialize first table row, which contains the numbers across the top of the board
+    for(let i = 0; i < newSize; i++)
+    {
+        let newData = document.createElement("td");
+        newData.className = "NumRowTop";
+        newData.style = "border-color: " + newTableColor + ";";
+
+        let columnInfo = newGrid.GetColumnGroups(i);
+
+        if(columnInfo.length == 0)
+        {
+            // put a 0 on the column header if we have no consecutive values
+            let newText = document.createTextNode("0");
+            newData.appendChild(newText);
+        }
+        else
+        {
+            for(value in columnInfo)
+                newData.innerHTML += columnInfo[value] + "<br>";
+        }
+        
+        rowHeader.appendChild(newData);
+
+    }
+
+    newTBody.appendChild(rowHeader);
+
+    // initialize rest of the table. Initialize from top to bottom.
+    for(let i = 0; i < newGrid.GetHeight(); i++) 
+    {
+        let newRow = document.createElement("tr");
+        let newRowHeader = document.createElement("td");
+        newRowHeader.className = "NumRowLeft";
+
+        let rowInfo = newGrid.GetRowGroups(i); 
+
+        if(rowInfo.length == 0)
+        {
+            // put a 0 on the column header if we have no consecutive values
+            let newText = document.createTextNode("0");
+            newRowHeader.appendChild(newText);
+        }
+        else
+        {
+            for(value in rowInfo)
+                newRowHeader.innerHTML += rowInfo[value] + "\t";
+        }
+        
+        newRow.appendChild(newRowHeader);
+
+        // Initialize rest of the grid with squares. This will populate left to right in each row.
+        for(let j = 0; j < grid.GetWidth(); j++)
+        {
+            let newCell = document.createElement("td");
+            newCell.className = "notRevealed";
+
+            // let cellButton = document.createElement("button");
+            // cellButton.className = "tileButton";
+            // // cellButton.onclick = grid.GetTile(j, i).ExecuteOnClick();
+
+            // newCell.appendChild(cellButton);
+            newRow.appendChild(newCell);
+        }
+
+        newTBody.appendChild(newRow);
+    }
+
+    newTable.appendChild(newTBody);
+    newSection.appendChild(newTable);
+    return newSection;
+}
+
 // This function establishes the onclick behavior for each tile on the grid that is selectable.
 function CreateTableOnClickFunctionality()
 {

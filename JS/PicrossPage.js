@@ -27,6 +27,16 @@ function CreateGrid()
     StartTimer();
 }
 
+function CreateGridFromDB(newDimension)
+{
+    grid = new Grid(newDimension, newDimension);
+
+    CreateTable();
+    CreateTableOnClickFunctionality();
+    UpdateGameStats();
+    StartTimer();
+}
+
 function StartArcadeMode()
 {
     let numberOfLevels = document.getElementById("numberOfLevels").value;
@@ -220,11 +230,13 @@ function SaveLevelData()
     {
         for( j = 0; j < grid.GetHeight(); j++)
         {
-            let newString = '{ "row" : ' + j.toString() + ', "column" : ' + i.toString() + ', "isMistake" : ' + grid.GetTile(j, i).GetIsMistake() + ' }'
-            data.tiles.push(newString);
+            let newObj = {row : j.toString(), column : i.toString(), isMistake : grid.GetTile(j, i).GetIsMistake().toString()};
+            // let newString = '{ row : ' + j.toString() + ', column : ' + i.toString() + ', isMistake : ' + grid.GetTile(j, i).GetIsMistake() + ' }';
+            data.tiles.push(JSON.stringify(newObj));
         }
     }
 
+    // tiles = JSON.stringify(tiles);
     let jsonData = JSON.stringify(data);
     
     request= new XMLHttpRequest();
@@ -238,11 +250,45 @@ function LevelCallback ()
 {
     if(request.readyState == 4)
     {
+        console.log(request.responseText);
         if(request.responseText == "Login")
             alert("You must be signed into an account to save a level");
         else
             alert("Level Saved");
     }
+}
+
+function LoadLevelData()
+{
+    $.ajax({
+        url : '../PHP/GetLevelData.php', // your php file
+        type : 'GET', // type of the HTTP request
+        success : function(data){
+           PopulateLevelData(data);
+        //    console.log(obj);
+        }
+     });
+
+
+}
+
+function PopulateLevelData(levelData)
+{
+    
+    levelData = JSON.parse(levelData);
+    let levelSection = document.createElement("section");
+    levelSection.id = "levelDataSection";
+
+    for(let i = 0; i < levelData.length; i++)
+    {
+        let newTable = CreateTableFromDB(levelData[i]["width"], levelData[i]["tiles"], levelData[i]["tableColor"], levelData[i]["tileColor"]);
+
+        levelSection.append(newTable);
+    }
+
+    document.body.insertBefore(levelSection, document.body.firstChild);
+
+    // CreateGridFromDB();
 }
 
 function hexToRGB(hex, alpha) 
