@@ -72,26 +72,26 @@ class GridDB
         for(let i = 0; i < newSize; i++)
             this.tiles[i] = new Array(newSize);
 
-        // console.log(newTiles);
-        for(let i = 0; i < newTiles.length; i++)
+        for(let i = 0; i < newTiles["tiles"].length; i++)
         {
-            // let newTile = JSON.parse(newTiles[i]);
-            console.log(newTiles[i]);
+            let newTile = newTiles["tiles"][i];
+
             let newRow = newTile["row"];
             let newColumn = newTile["column"];
-            // console.log(newRow);
-
             this.tiles[newRow][newColumn] = new Tile(newRow, newColumn);
-
-            if(newTile["isMistake"])
+            
+            if(newTile["isMistake"] == "true")
             {
-                this.tiles[newRow][newColumn],SetIsMistake(true);
+                this.tiles[newRow][newColumn].SetIsMistake(true);
                 this.totalMistakeTiles++;
                 this.tilesLeft--; // subtract from the pool of non-mistake tiles.
             }
             else
                 this.hintTiles.push(this.tiles[newRow][newColumn]);
+
         }
+
+        // console.log(this.tiles);
     }
 
     GetHeight()

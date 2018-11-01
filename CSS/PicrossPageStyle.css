@@ -24,6 +24,17 @@ section#GameStatsSection{
     text-align: center;
     padding: 5px;
     float: right;
+    clear: right;
+}
+
+section#SaveLoadLevel{
+    border-style: solid;
+    border-color: black;
+    text-align: center;
+    padding: 5px;
+    float: right;
+    clear: right;
+    width: 10vw;
 }
 
 input{

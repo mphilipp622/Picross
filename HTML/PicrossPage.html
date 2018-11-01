@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
         <script src = "../JS/jquery-3.3.1.min.js"></script>
     </head>
-    <body >
+    <body onload="LoadLevelData()">
         <script src="../JS/PicrossPage.js" async defer></script>
         <script src="../JS/Classes.js" async defer></script>
         <script src="../JS/PicrossTable.js" async defer></script>
@@ -27,24 +27,6 @@
                     <a href="ProfilePage.html">View Profile</a>
                     <a href="CreateAccount.html">Create Account</a>
                 </div>
-            </div>
-        </section>
-
-        <section id="GameStatsSection">
-            <div class="GameStats">
-                <p class="StatHeader">Time Elapsed</p>
-                <p class="TimerText">00:00</p>
-                <p class="StatHeader">Turns</p>
-                <p class="StatData" id="TurnData">0</p>
-                <p class="StatHeader">Tiles Remaining</p>
-                <p class="StatData" id="TilesRemainingData">0</p>
-                <p class="StatHeader">Mistakes</p>
-                <p class="StatData" id="MistakeData">0</p>
-                <button type="button" onclick="ShowHintTile()">Show Hint</button><br>
-                <button type = "button" onclick = "SaveLevelData()">Save Level</button>
-                <button type = "button" onclick="LoadLevelData()">Load Level</button>
-                <!-- <br>
-                <button type="button" onclick="SaveLevelData()">Save Levels</button> -->
             </div>
         </section>
 
@@ -92,7 +74,7 @@
 
                 <form class="GridColorForm">
                     <h3>Color Settings</h3>
-                    Tile Color: <input id = "TileColor" type="color">
+                    Tile Color: <input id = "TileColor" type="color" value="#808080">
                     <br>
                     Border Color: <input id="BorderColor" type="color">
                     <br>
@@ -101,6 +83,45 @@
 
             </div>
         </section>
+
+        <section id="GameStatsSection">
+                <div class="GameStats">
+                    <p class="StatHeader">Time Elapsed</p>
+                    <p class="TimerText">00:00</p>
+                    <p class="StatHeader">Turns</p>
+                    <p class="StatData" id="TurnData">0</p>
+                    <p class="StatHeader">Tiles Remaining</p>
+                    <p class="StatData" id="TilesRemainingData">0</p>
+                    <p class="StatHeader">Mistakes</p>
+                    <p class="StatData" id="MistakeData">0</p>
+                    <button type="button" onclick="ShowHintTile()">Show Hint</button><br>
+                    <!-- <br>
+                    <button type="button" onclick="SaveLevelData()">Save Levels</button> -->
+                </div>
+            </section>
+            
+            <br>
+
+            <section id="SaveLoadLevel">
+                <header>Save/Load Levels</header>
+                <button type = "button" onclick = "SaveLevelData()">Save Level</button>
+                <button type = "button" onclick = "PopulateLevelData(-1)">Previous Level</button>
+                <button type = "button" onclick="PopulateLevelData(1)">Next Level</button><br>
+                <div id = "levelDetails">
+                    <p>Created By</p>
+                    <p id = "username"></p>
+                </div>
+                <!-- <br>
+                <button type="button" onclick="SaveLevelData()">Save Levels</button> -->
+            </section>
+
+        <section id = "PicrossTableSection">
+            <div id = "PicrossGrid">
+                <!-- Instantiated tables will populate here from the JS -->
+            </div>
+        </section>
+
+        
 
     </body>
 </html>

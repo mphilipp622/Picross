@@ -11,6 +11,8 @@ var score = 0;
 
 var levels = []; // stores grids for a level
 var currentLevel = 0;
+var dbLevels;
+var loadedLevel = -1;
 
 var isArcadeMode = false;
 var isTimeAttackMode = false;
@@ -19,16 +21,6 @@ function CreateGrid()
 {
     let selection = document.getElementById("gridDimension");
     let newDimension = parseInt(selection.options[selection.selectedIndex].value);
-    grid = new Grid(newDimension, newDimension);
-
-    CreateTable();
-    CreateTableOnClickFunctionality();
-    UpdateGameStats();
-    StartTimer();
-}
-
-function CreateGridFromDB(newDimension)
-{
     grid = new Grid(newDimension, newDimension);
 
     CreateTable();
@@ -250,7 +242,6 @@ function LevelCallback ()
 {
     if(request.readyState == 4)
     {
-        console.log(request.responseText);
         if(request.responseText == "Login")
             alert("You must be signed into an account to save a level");
         else
@@ -264,7 +255,10 @@ function LoadLevelData()
         url : '../PHP/GetLevelData.php', // your php file
         type : 'GET', // type of the HTTP request
         success : function(data){
-           PopulateLevelData(data);
+            if(data == "NoData")
+                return;
+            dbLevels = JSON.parse(data);
+        //    PopulateLevelData(data);
         //    console.log(obj);
         }
      });
@@ -272,21 +266,28 @@ function LoadLevelData()
 
 }
 
-function PopulateLevelData(levelData)
+function PopulateLevelData(nextIndex)
 {
+    // Get the next index of the levels from the database. Bounds check
     
-    levelData = JSON.parse(levelData);
-    let levelSection = document.createElement("section");
-    levelSection.id = "levelDataSection";
+    if(loadedLevel + nextIndex < 0)
+        return;
+    else if(loadedLevel + nextIndex >= dbLevels.length)
+        return;
 
-    for(let i = 0; i < levelData.length; i++)
-    {
-        let newTable = CreateTableFromDB(levelData[i]["width"], levelData[i]["tiles"], levelData[i]["tableColor"], levelData[i]["tileColor"]);
+    loadedLevel = loadedLevel + nextIndex;
+    let nextLevel = dbLevels[loadedLevel];
 
-        levelSection.append(newTable);
-    }
+    let newTable = CreateTableFromDB(nextLevel["width"], nextLevel["tiles"], nextLevel["tableColor"], nextLevel["tileColor"]);
 
-    document.body.insertBefore(levelSection, document.body.firstChild);
+    let newDiv = document.getElementById("PicrossGrid");
+
+    // Check if table already exists. If so, kill it.
+    if(document.getElementById("levelSection") != null)
+        document.getElementById("levelSection").remove();
+
+    document.getElementById("username").innerHTML = nextLevel["username"];
+    newDiv.append(newTable);
 
     // CreateGridFromDB();
 }

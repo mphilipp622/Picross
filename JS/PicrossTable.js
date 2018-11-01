@@ -6,18 +6,18 @@ This file makes many references to the Grid and Tile class as well as global var
 // This function creates a new picross table in HTML based on Grid and Tile data.
 function CreateTable()
 {
-    var newSection = document.createElement("section");
-    newSection.id = "PicrossTableSection";
+    var newSection = document.getElementById("PicrossTableSection");
+    // newSection.id = "PicrossTableSection";
 
-    var newDiv = document.createElement("div")
-    newDiv.className = "PicrossGrid";
+    var newDiv = document.getElementById("PicrossGrid");
 
     // Check if table already exists. If so, kill it.
-    if(document.body.getElementsByClassName("PicrossTable")[0] != null)
-        document.body.getElementsByClassName("PicrossTable")[0].remove();
+    if(document.getElementById("levelSection") != null)
+        document.getElementById("levelSection").remove();
 
     var newTable = document.createElement("table");
     newTable.className = "PicrossTable";
+    newTable.id = "levelSection";
 
     let newTBody = document.createElement("tbody");
 
@@ -100,12 +100,13 @@ function CreateTable()
 
 function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
 {
-    // newTiles = JSON.parse(newTiles);
+    newTiles = JSON.parse(newTiles);
     // console.log(newTiles);
     let newGrid = new GridDB(newSize, newTiles);
 
     let newTable = document.createElement("table");
-    newTable.className = "levelSection";
+    newTable.id = "levelSection";
+    newTable.className = "PicrossTable";
 
     let newTBody = document.createElement("tbody");
 
@@ -146,6 +147,7 @@ function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
         let newRow = document.createElement("tr");
         let newRowHeader = document.createElement("td");
         newRowHeader.className = "NumRowLeft";
+        newRowHeader.style = "border-color: " + newTableColor + ";";
 
         let rowInfo = newGrid.GetRowGroups(i); 
 
@@ -164,10 +166,11 @@ function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
         newRow.appendChild(newRowHeader);
 
         // Initialize rest of the grid with squares. This will populate left to right in each row.
-        for(let j = 0; j < grid.GetWidth(); j++)
+        for(let j = 0; j < newGrid.GetWidth(); j++)
         {
             let newCell = document.createElement("td");
             newCell.className = "notRevealed";
+            newCell.style = "border-color: " + newTableColor + ";" + "background-color: " + newTileColor + ";";
 
             // let cellButton = document.createElement("button");
             // cellButton.className = "tileButton";
@@ -181,8 +184,7 @@ function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
     }
 
     newTable.appendChild(newTBody);
-    newSection.appendChild(newTable);
-    return newSection;
+    return newTable;
 }
 
 // This function establishes the onclick behavior for each tile on the grid that is selectable.
