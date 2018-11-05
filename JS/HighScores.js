@@ -92,5 +92,12 @@ function GetSortedData(columnName)
     // set the next sorting mode. Circles the array in this order: none, ASC, DESC
     currentSort[columnName] = sortOptions[(++sortIndex[columnName]) % sortOptions.length];
     
+    if(currentSort[columnName] == "ASC")
+        document.getElementById(columnName).className = "headerSortDown";
+    else if(currentSort[columnName] == "DESC")
+        document.getElementById(columnName).className = "headerSortUp";
+    else
+        document.getElementById(columnName).classList.remove("headerSortUp");
+
     GetTableData();
 }

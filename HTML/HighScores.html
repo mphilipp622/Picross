@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="../CSS/HighScoreStyle.css">
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
         <link rel="stylesheet" href="../CSS/Theme.css">
+
         <script src = "../JS/jquery-3.3.1.min.js"></script>
     </head>
     <body onload = "GetTableData()">
@@ -28,14 +29,18 @@
             </div>
         </section>
 
+        <section id = "title">
+            <h1>High Scores</h1>
+        </section>
+
         <section id="Scores">
             <table id="mainTable">
                 <tr>
-                    <th onclick="GetSortedData('username')">Username</th>
-                    <th onclick="GetSortedData('gridSize')">Grid Size</th>
-                    <th onclick="GetSortedData('gameDuration')">Game Duration</th>
-                    <th onclick="GetSortedData('mistakes')">Mistakes</th>
-                    <th onclick="GetSortedData('score')">Score</th>
+                    <th id = "username" onclick="GetSortedData('username')">Username</th>
+                    <th id = "gridSize" onclick="GetSortedData('gridSize')">Grid Size</th>
+                    <th id = "gameDuration" onclick="GetSortedData('gameDuration')">Game Duration</th>
+                    <th id = "mistakes" onclick="GetSortedData('mistakes')">Mistakes</th>
+                    <th id = "score" onclick="GetSortedData('score')">Score</th>
                 </tr>
                 <tbody id = "dynamicData">
 
