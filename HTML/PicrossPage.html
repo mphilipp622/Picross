@@ -4,6 +4,7 @@
         <title></title>
         <link rel="stylesheet" href="../CSS/PicrossPageStyle.css">
         <link rel="stylesheet" href="../CSS/NavBarStyle.css">
+        <link rel="stylesheet" href="../CSS/Theme.css">
         <script src = "../JS/jquery-3.3.1.min.js"></script>
     </head>
     <body onload="LoadLevelData()">
@@ -64,13 +65,13 @@
                     <button type="button" onclick="CreateGrid()">Create Grid</button>
                 </form>
 
-                <form class="GridImageForm">
+                <!-- <form class="GridImageForm">
                     <h3>Image Mode Settings</h3>
                     Choose Image<br> 
                     <input type="file" id="imageInput">
                     <br>
                     <button type="button" onclick="CreateGridFromImage()">Create Grid From Image</button>
-                </form>
+                </form> -->
 
                 <form class="GridColorForm">
                     <h3>Color Settings</h3>
@@ -103,14 +104,15 @@
             <br>
 
             <section id="SaveLoadLevel">
-                <header>Save/Load Levels</header>
-                <button type = "button" onclick = "SaveLevelData()">Save Level</button>
-                <button type = "button" onclick = "PopulateLevelData(-1)">Previous Level</button>
+                <h3>Save/Load Levels</h3>
+                <button type = "button" onclick = "SaveLevelData()">Save Level</button><br>
+                <button type = "button" onclick = "PopulateLevelData(-1)">Previous Level</button><br>
                 <button type = "button" onclick="PopulateLevelData(1)">Next Level</button><br>
                 <div id = "levelDetails">
                     <p>Created By</p>
                     <p id = "username"></p>
                 </div>
+                <button type = "button" onclick = "StartLevel()">Start</button>
                 <!-- <br>
                 <button type="button" onclick="SaveLevelData()">Save Levels</button> -->
             </section>

@@ -85,7 +85,6 @@ function StartTimer()
     clearInterval(id);
 
     let timerText = document.getElementsByClassName("TimerText")[0];
-
     totalTime = 0;
 
     id = setInterval(function()
@@ -289,7 +288,18 @@ function PopulateLevelData(nextIndex)
     document.getElementById("username").innerHTML = nextLevel["username"];
     newDiv.append(newTable);
 
+    UpdateGameStats();
+    StopTimer();
     // CreateGridFromDB();
+}
+
+function StartLevel()
+{
+    if(grid == null)
+        return;
+        
+    CreateTableOnClickFunctionality();
+    StartTimer();
 }
 
 function hexToRGB(hex, alpha) 

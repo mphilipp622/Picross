@@ -1,10 +1,19 @@
+html, body, {
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
 form{
+    /* width: 25VW; */
     border-style: solid;
     border-color: black;
-    max-width: 100%;
+    /* max-width: 100%; */
     white-space: nowrap;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    /* margin-bottom: 5px; */
+    /* margin-top: 5px; */
     text-align: center;
 }
 
@@ -13,28 +22,42 @@ form{
 } */
 
 section#GridOptionsSection{
-    width: 15vw;
+    /* max-width: 100%; */
+    /* width: 15vw; */
     float: left;
-    margin-right: 30px;
+    width: 200px;
+    background-color: lightsteelblue;
+    clear: right;
+    display: block;
+    /* margin-right: 30px; */
 }
 
 section#GameStatsSection{
+    /* max-width: 100%; */
     border-style: solid;
     border-color: black;
     text-align: center;
-    padding: 5px;
+    width:130px;
     float: right;
     clear: right;
+    background-color: lightsteelblue;
+    display: block;
+
 }
 
 section#SaveLoadLevel{
+    /* max-width: 100%; */
     border-style: solid;
     border-color: black;
     text-align: center;
-    padding: 5px;
+    /* padding: 5px; */
+    width: 130px;
     float: right;
     clear: right;
-    width: 10vw;
+    /* width: 10vw; */
+    background-color: lightsteelblue;
+    display: block;
+
 }
 
 input{
@@ -54,6 +77,13 @@ table.PicrossTable{
     border-color: black; */
     table-layout: fixed;
     font-size: 20px;
+    max-height: 100vh;
+}
+
+#PicrossTableSection{
+    overflow: auto;
+    padding-left: 5px;
+    display: block;
 }
 
 p.StatHeader{
@@ -68,22 +98,30 @@ p.StatData{
 td.NumRowTop{
     border-left: solid;
     border-right: solid;
+    border-top:solid;
     border-color: black;
-    padding: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
     text-align: center;
     font-weight: bold;
+    width: 2vw;
+    background-color: lightsteelblue;
 
 }
 
 td.NumRowLeft{
     border-top: solid ;
+    border-left:solid;
     border-bottom: solid ;
     border-color:black;
     text-align: right;
     font-weight: bold;
-    padding: 12px;
-    max-width: 100%;
+    padding-right: 5px;
+    height:5vh;
+    /* max-width: 100%; */
     white-space: nowrap;
+    background-color: lightsteelblue;
+
 }
 
 /* This is for the empty cell at the top-left of the picross board. */
@@ -98,9 +136,8 @@ a tile or when the user wins the game
 td.notRevealed {
     border-collapse: collapse;
     border-style: solid;
-    padding: 15px;
-    width: 32px;
-    height: 32px;
+    /* width: 32px; */
+        /* height: 32px; */
     background-color: grey;
 }
 
@@ -111,9 +148,6 @@ td.notRevealed {
 td.mistakeTile{
     border-collapse: collapse;
     border-style: solid;
-    padding: 15px;
-    width: 32px;
-    height: 32px;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url("../images/MistakeIcon.png");
@@ -122,17 +156,21 @@ td.mistakeTile{
 td.notMistakeTile{
     border-collapse: collapse;
     border-style: solid;
-    padding: 15px;
-    width: 32px;
-    height: 32px;
     background-color: lightblue;
 }
 
 td.victoryTile{
     border-collapse: collapse;
     border-style: solid;
-    padding: 15px;
-    width: 32px;
-    height: 32px;
     background-color: black;
 }
+
+/* input[type="file"] {
+    display: none;
+}
+
+.filelUpload {
+    border: 1px solid black;
+    display: inline-block;
+    cursor: pointer;
+} */

@@ -1,6 +1,7 @@
 /*
 This file largely handles creation and management of HTML elements using JS.
-This file makes many references to the Grid and Tile class as well as global variables found in MainPage.js
+This file makes many references to the Grid and Tile class as well as global 
+variables found in MainPage.js
 */
 
 // This function creates a new picross table in HTML based on Grid and Tile data.
@@ -184,6 +185,8 @@ function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
     }
 
     newTable.appendChild(newTBody);
+
+    grid = newGrid;
     return newTable;
 }
 
@@ -256,10 +259,10 @@ function RemoveGridOptions()
 {
     let gridOptionForm = document.getElementsByClassName("GridForm")[0];
     let gridDimensionForm = document.getElementsByClassName("GridDimensions")[0];
-    let gridImageForm = document.getElementsByClassName("GridImageForm")[0];
+    // let gridImageForm = document.getElementsByClassName("GridImageForm")[0];
 
     gridOptionForm.removeChild(gridDimensionForm);
-    gridOptionForm.removeChild(gridImageForm);
+    // gridOptionForm.removeChild(gridImageForm);
 
 }
 
