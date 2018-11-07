@@ -150,7 +150,8 @@ td.mistakeTile{
     border-style: solid;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("../images/MistakeIcon.png");
+    background-color: red
+    /* background-image: url("../images/MistakeIcon.png"); */
 }
 
 td.notMistakeTile{

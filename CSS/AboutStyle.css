@@ -7,6 +7,11 @@ p{
     color: black;
 }
 
+a{
+    font-size: 22px;
+    text-align: center;
+}
+
 h1{
     font-size: 30px;
     color:black;
@@ -19,7 +24,43 @@ h2{
     text-align: center;
 }
 
-section#About, section#interests{
+section.info{
     border: solid black;
     background-color: lightsteelblue;
+}
+
+#catPics{
+    text-align: center;
+}
+
+.catPic{
+    /* display: block; */
+    margin: auto;
+    max-width: 20%;
+    max-height: 20%;
+}
+
+#github{
+    margin: auto;
+    padding-right: 0px;
+    max-width: 25%;
+    max-height: 25%;
+}
+
+#portfolio{
+    margin: auto;
+    padding-left: 80px;
+    max-width: 10%;
+    max-height: 10%;
+}
+
+#breakout{
+    margin: auto;
+    padding-left: 80px;
+    max-width: 15%;
+    max-height: 15%;
+}
+
+#linkImages{
+    text-align: center;
 }
