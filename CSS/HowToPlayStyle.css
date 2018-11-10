@@ -1,4 +1,5 @@
 p{
+    text-align: center;
     font-size: 22px;
 }
 
@@ -7,6 +8,33 @@ p{
 }
 
 h1{
+    text-align: center;
     font-size: 30px;
     color:black;
+}
+
+.info{
+    overflow: hidden;
+    text-align: center;
+    width: 65vw;
+    /* position: relative; */
+    /* left: 50%; */
+    border: solid black;
+    margin: auto;
+    /* transform: translate(-50%); */
+}
+
+.info img
+{
+    float: left;
+    /* position: relative; */
+    max-width: 50%;
+    max-height: 50%;
+    /* left: 15%; */
+}
+
+.info.normalText
+{
+    float: right;
+    overflow: auto;
 }
