@@ -1,0 +1,33 @@
+#loginInfo
+{
+    padding-top: 20px;
+    margin: auto;
+    text-align:  center;
+    width: 20vw;
+    font-size: 22px;
+    border: solid black;
+    background-color: lightsteelblue;
+    /* padding-right: 100px; */
+}
+
+legend
+{
+    font-size: 28px;
+}
+
+input
+{
+    height: 30px;
+    font-size: 20px;
+}
+
+button
+{
+    font-size: 20px;
+    background-color: #333;
+    border: none;
+    text-decoration: none;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

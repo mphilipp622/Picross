@@ -29,6 +29,71 @@ function CreateGrid()
     StartTimer();
 }
 
+function CreateGridFromImage() 
+{
+    let imgAddr = document.getElementById("imageInput").value
+    let selection = document.getElementById("gridDimensionImage")
+    l = parseInt(selection.options[selection.selectedIndex].value);
+
+	var canvas = document.createElement("canvas");
+	var ctx = canvas.getContext("2d");
+	let img = new Image();
+	img.crossOrigin = "Anonymous";
+	//img.src = "/assets/Mario.png";
+	//img.src = "https://vignette.wikia.nocookie.net/mario/images/3/32/8_Bit_Mario.png/revision/latest?cb=20120602231304";
+	//img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Emacs_Tetris_vector_based_detail.svg/200px-Emacs_Tetris_vector_based_detail.svg.png";
+	img.src = imgAddr;
+
+	function getPixel(x, y) {
+		// returns RGB and Alpha
+		return ctx.getImageData(x, y, 1, 1).data;
+	}
+
+	function getImageAverage() {
+		let count = 0;
+		let total = 0;
+		for (let i = 0; i < l; i++) {
+			for (let j = 0; j < l; j++) {
+				let p = getPixel(i, j);
+				total += p[0] + p[1] + p[2] + p[3];
+				count++;
+			}
+		}
+		let avg = total / count;
+		return avg;
+	}
+
+	function processImage() {
+		let avg = getImageAverage();
+		generateGrid(l);
+		for (let i = 0; i < l; i++) {
+			for (let j = 0; j < l; j++) {
+				let p = getPixel(j, i);
+				let total = p[0] + p[1] + p[2] + p[3];
+				if (total >= avg) {
+					gameBoard.grid[i][j].isUsed = true;
+				}
+			}
+		}
+	}
+
+	// will trigger automatically when the imageworks is called and the image has loaded
+	img.onload = function() {
+		var oc = document.createElement("canvas"),
+			octx = oc.getContext("2d");
+
+		oc.width = l; // needed for the canvas
+		oc.height = l; // needed for the canvas
+
+		octx.drawImage(img, 0, 0, l, l);
+		ctx.drawImage(oc, 0, 0, l, l);
+		oc.style.display = "none";
+		processImage();
+		createGameBoardHTML();
+		activateSection("editor");
+	};
+}
+
 function StartArcadeMode()
 {
     let numberOfLevels = document.getElementById("numberOfLevels").value;
