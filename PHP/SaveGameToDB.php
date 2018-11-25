@@ -27,6 +27,14 @@ if (mysqli_connect_errno())
     return;
 }
 
+// Check if table exists and create it if not
+if(!mysql_query("DESCRIBE game"))
+{
+    // game table does not exist so insert it
+    $queryString = "CREATE TABLE IF NOT EXISTS game (gameID VARCHAR(32), username VARCHAR(45), gridSize INT, gameDuration INT, mistakes INT, score INT) ENGINE=INNODB;"
+    $conn->query($queryString)
+}
+
 // Create the values that get inserted into SQL
 $valueString = "('" . $jsonInput['gameID'] . "', '" . $playerName . "', '" . $jsonInput['gridSize'] . "', '" . $jsonInput['gameDuration'] .
 "', '" . $jsonInput['mistakes'] . "', '" . $jsonInput['score'] . "')";

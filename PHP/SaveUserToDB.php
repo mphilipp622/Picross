@@ -15,6 +15,14 @@ if (mysqli_connect_errno())
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
+// Check if table exists and create it if not
+if(!mysql_query("DESCRIBE player"))
+{
+    // game table does not exist so insert it
+    $queryString = "CREATE TABLE IF NOT EXISTS player (username VARCHAR(45), password VARCHAR(45), firstName VARCHAR(45), lastName VARCHAR(45), age INT, gender VARCHAR(45), location VARCHAR(45)) ENGINE=INNODB;"
+    $conn->query($queryString)
+}
+
 $username = $_POST["username"];
 $password = $_POST["password"];
 $firstName = $_POST["firstName"];
