@@ -1,5 +1,10 @@
 <?php
-session_start();
+
+if(!isset($_SESSION)) 
+{ 
+    session_start();
+} 
+
 
 if(isset($_SESSION['username']))
 { // OR isset($_SESSION['user']), if array
