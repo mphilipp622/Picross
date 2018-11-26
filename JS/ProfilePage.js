@@ -13,7 +13,7 @@ function GetProfileInfo()
 function WriteDataToProfile(newData)
 {
     data = JSON.parse(newData);
-    console.log(data);
+    // console.log(data);
     document.getElementById("username").innerHTML += data["username"];
     document.getElementById("firstName").innerHTML += data["firstName"];
     document.getElementById("lastName").innerHTML += data["lastName"];
@@ -32,7 +32,7 @@ function UpdateImage()
     formData.append("username", document.getElementById("username").innerHTML);
 
     // Get the image file that was uploaded
-    console.log(document.getElementById("Avatar").files[0]);
+    // console.log(document.getElementById("Avatar").files[0]);
     formData.append("avatar", document.getElementById("Avatar").files[0]);
 
     $.ajax({

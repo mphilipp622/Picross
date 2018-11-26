@@ -3,3 +3,51 @@ img{
     height:20%;
     padding-top: 5px;
 }
+
+#UserInfo
+{
+    border: solid black;
+    box-shadow: 0px 5px 10px 10px rgba(0, 0, 0, 0.4);
+    background-color: lightsteelblue;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 50vw;
+    margin: auto;
+    overflow: hidden;
+    font-size: 20px;
+}
+
+#text
+{
+    padding-top: 10px;
+    padding-left: 20px;
+    float: left;
+}
+
+#avatarOptions
+{
+    padding-top: 20px;
+    /* padding-left: 40px;
+    padding-right: 40px; */
+    padding-bottom: 20px;
+    margin: auto;
+    float: right;
+    position: relative;
+    overflow: auto;
+    clear:right;
+}
+
+img
+{
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.4);
+    right: 10%;
+    /* width: 35%; */
+    margin: auto;
+    float: right;
+    min-height: 30%;
+    min-width: 30%;
+    max-height: 50%;
+    max-width: 50%;
+    position: relative;
+    overflow: auto;
+}

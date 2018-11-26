@@ -13,10 +13,11 @@ h1{
     color:black;
 }
 
-.info{
+#HowToPlay
+{
     overflow: hidden;
     text-align: center;
-    width: 65vw;
+    width: 80vw;
     background-color:lightsteelblue;
     box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.4);
 
@@ -27,19 +28,21 @@ h1{
     /* transform: translate(-50%); */
 }
 
-.info img
+#arcadeModeInfo p
 {
-    float: left;
-    /* position: relative; */
-    max-width: 50%;
-    max-height: 50%;
-        box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.4);
-
-    /* left: 15%; */
+    text-align: left;
+    margin:auto;
 }
 
-.info.normalText
+#arcadeModeInfo img
 {
     float: right;
-    overflow: auto;
+    min-width: 30%;
+    min-height: 30%;
+    max-width: 50%;
+    max-height: 50%;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.4);
+    margin: auto;
+    position: relative;
+    padding-right: 20px;
 }

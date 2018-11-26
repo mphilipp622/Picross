@@ -16,11 +16,12 @@ if (mysqli_connect_errno())
 }
 
 // Check if table exists and create it if not
-if(!mysql_query("DESCRIBE player"))
+if(mysqli_query($conn, "DESCRIBE player") == false)
 {
     // game table does not exist so insert it
-    $queryString = "CREATE TABLE IF NOT EXISTS player (username VARCHAR(45), password VARCHAR(45), firstName VARCHAR(45), lastName VARCHAR(45), age INT, gender VARCHAR(45), location VARCHAR(45)) ENGINE=INNODB;"
-    $conn->query($queryString)
+    echo "NO TABLE PLAYER";
+    $queryString = "CREATE TABLE IF NOT EXISTS player (username VARCHAR(45), password VARCHAR(45), firstName VARCHAR(45), lastName VARCHAR(45), age INT, gender VARCHAR(45), location VARCHAR(45)) ENGINE=INNODB;";
+    $conn->query($queryString);
 }
 
 $username = $_POST["username"];

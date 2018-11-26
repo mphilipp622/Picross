@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $playerName;
 
 if(isset($_SESSION['username']))
@@ -28,11 +30,11 @@ if (mysqli_connect_errno())
 }
 
 // Check if table exists and create it if not
-if(!mysql_query("DESCRIBE game"))
+if(!mysqli_query($conn, "DESCRIBE game"))
 {
     // game table does not exist so insert it
-    $queryString = "CREATE TABLE IF NOT EXISTS game (gameID VARCHAR(32), username VARCHAR(45), gridSize INT, gameDuration INT, mistakes INT, score INT) ENGINE=INNODB;"
-    $conn->query($queryString)
+    $queryString = "CREATE TABLE IF NOT EXISTS game (gameID VARCHAR(32), username VARCHAR(45), gridSize INT, gameDuration INT, mistakes INT, score INT) ENGINE=INNODB;";
+    $conn->query($queryString);
 }
 
 // Create the values that get inserted into SQL
@@ -49,3 +51,5 @@ if($result)
     echo "Game Inserted Successfully";
 else
     echo "Failed to Insert";
+
+?>

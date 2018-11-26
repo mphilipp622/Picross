@@ -30,19 +30,25 @@
                 </div>
             </div>
         </section>
+        <br>
 
         <section id = "UserInfo">
+            <div id = "text">
+                <p class = "userData"><b>Username:</b> <span id = "username"></span></p>
+                <p class = "userData" id = "firstName"><b>First Name:</b> </p>
+                <p class = "userData" id = "lastName"><b>Last Name:</b> </p>
+                <p class = "userData" id = "age"><b>Age:</b> </p>
+                <p class = "userData" id = "gender"><b>Gender:</b> </p>
+                <p class = "userData" id = "location"><b>Location:</b> </p>
+            </div>
+            <br>
             <img class = "userImage" id = "avatar"><br>
-
-            <input type = "file" id = "Avatar" name = "Avatar"><br>
-            <button type="button" value = "Submit" onclick = "UpdateImage()">Submit</button>
-
-            <p class = "userData">Username: <span id = "username"></span></p>
-            <p class = "userData" id = "firstName">First Name: </p>
-            <p class = "userData" id = "lastName">Last Name: </p>
-            <p class = "userData" id = "age">Age: </p>
-            <p class = "userData" id = "gender">Gender: </p>
-            <p class = "userData" id = "location">Location: </p>
+            
+            <div id = "avatarOptions">
+                <input type = "file" id = "Avatar" name = "Avatar"><br>
+                <button type="button" value = "Submit" onclick = "UpdateImage()">Submit</button>
+            </div>
         </section>
+
     </body>
 </html>
