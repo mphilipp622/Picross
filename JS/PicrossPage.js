@@ -31,29 +31,68 @@ function CreateGrid()
 
 function CreateGridFromImage() 
 {
-    let imgAddr = document.getElementById("imageInput").value
-    let selection = document.getElementById("gridDimensionImage")
-    l = parseInt(selection.options[selection.selectedIndex].value);
+    let img = new Image();
+    img.crossOrigin = "Anonymous";
 
-	var canvas = document.createElement("canvas");
-	var ctx = canvas.getContext("2d");
-	let img = new Image();
-	img.crossOrigin = "Anonymous";
-	//img.src = "/assets/Mario.png";
-	//img.src = "https://vignette.wikia.nocookie.net/mario/images/3/32/8_Bit_Mario.png/revision/latest?cb=20120602231304";
-	//img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Emacs_Tetris_vector_based_detail.svg/200px-Emacs_Tetris_vector_based_detail.svg.png";
-	img.src = imgAddr;
+    let dimension;
+    let ctx;
+    let canvas;
+
+    let imgFile = document.getElementById("imageInput").files[0];
+
+    let formData = new FormData();
+
+    formData.append("type", "level");
+    formData.append("image", imgFile);
+
+    $.ajax({
+        url: "../PHP/UploadLevelImage.php",
+        type: "POST",
+        data: formData, 
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(data) {
+        //   console.log(data);
+        },
+        error: function(data) {
+          console.log("Error");
+        },
+        complete: function(data) {
+            populateImage();
+          // After file uploads, update the active user and go to main page.
+        //   window.location.reload();
+          // window.location.href = "../HTML/Main.html";
+        }
+      });
+
+    function populateImage()
+    {
+        let selection = document.getElementById("gridDimensionImage")
+        dimension = parseInt(selection.options[selection.selectedIndex].value);
+    
+        canvas = document.createElement("canvas");
+        ctx = canvas.getContext("2d");
+        // canvas.width = dimension
+        // canvas.height = dimension
+    
+        
+        //img.src = "/assets/Mario.png";
+        //img.src = "https://vignette.wikia.nocookie.net/mario/images/3/32/8_Bit_Mario.png/revision/latest?cb=20120602231304";
+        //img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Emacs_Tetris_vector_based_detail.svg/200px-Emacs_Tetris_vector_based_detail.svg.png";
+        img.src = "../LevelImages/" + "temp.jpg";
+    }
 
 	function getPixel(x, y) {
 		// returns RGB and Alpha
 		return ctx.getImageData(x, y, 1, 1).data;
-	}
+    }
 
 	function getImageAverage() {
 		let count = 0;
 		let total = 0;
-		for (let i = 0; i < l; i++) {
-			for (let j = 0; j < l; j++) {
+		for (let i = 0; i < dimension; i++) {
+			for (let j = 0; j < dimension; j++) {
 				let p = getPixel(i, j);
 				total += p[0] + p[1] + p[2] + p[3];
 				count++;
@@ -65,32 +104,46 @@ function CreateGridFromImage()
 
 	function processImage() {
 		let avg = getImageAverage();
-		generateGrid(l);
-		for (let i = 0; i < l; i++) {
-			for (let j = 0; j < l; j++) {
+        newTiles = [];
+
+        // Initialize 2D array
+        for(let i = 0; i < dimension; i++)
+            newTiles[i] = new Array(dimension);
+
+		for (let i = 0; i < dimension; i++) {
+			for (let j = 0; j < dimension; j++) {
+                newTiles[i][j] = new Tile(i, j);
+
 				let p = getPixel(j, i);
 				let total = p[0] + p[1] + p[2] + p[3];
 				if (total >= avg) {
-					gameBoard.grid[i][j].isUsed = true;
+					newTiles[i][j].SetIsMistake(true);
 				}
 			}
-		}
+        }
+        grid = new Grid(dimension, dimension);
+        grid.SetTilesFromImage(newTiles, dimension);
 	}
 
 	// will trigger automatically when the imageworks is called and the image has loaded
 	img.onload = function() {
+
 		var oc = document.createElement("canvas"),
 			octx = oc.getContext("2d");
 
-		oc.width = l; // needed for the canvas
-		oc.height = l; // needed for the canvas
+		oc.width = dimension; // needed for the canvas
+		oc.height = dimension; // needed for the canvas
 
-		octx.drawImage(img, 0, 0, l, l);
-		ctx.drawImage(oc, 0, 0, l, l);
+		octx.drawImage(img, 0, 0, dimension, dimension);
+		ctx.drawImage(oc, 0, 0, dimension, dimension);
 		oc.style.display = "none";
-		processImage();
-		createGameBoardHTML();
-		activateSection("editor");
+        processImage();
+        CreateTable();
+        CreateTableOnClickFunctionality();
+        UpdateGameStats();
+        StartTimer();
+        // createGameBoardHTML();
+        // activateSection("editor");
 	};
 }
 

@@ -233,6 +233,30 @@ class Grid
         }
     }
 
+    SetTilesFromImage(newTiles, dimension)
+    {
+        // Called on when creating a grid from an image.
+
+        this.tiles = newTiles;
+        this.hintTiles = [];
+        this.totalMistakeTiles = 0;
+        this.tilesLeft = dimension * dimension;
+
+        for(let i = 0; i < dimension; i++)
+        {
+            for(let j = 0; j < dimension; j++)
+            {
+                if(this.tiles[i][j].GetIsMistake())
+                {
+                    this.totalMistakeTiles++;
+                    this.tilesLeft--;
+                }
+                else
+                    this.hintTiles.push(this.tiles[i][j]);
+            }
+        }
+    }
+
     GetHeight()
     {
         return this.height;
