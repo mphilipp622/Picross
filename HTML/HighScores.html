@@ -8,41 +8,41 @@
 
         <script src = "../JS/jquery-3.3.1.min.js"></script>
     </head>
-    <body onload = "GetTableData()">
+    <body onload = "GetTableData()" role = "document">
         <script src = "../JS/HighScores.js" async defer></script>
 
         <section class="NavBar">
-            <a href="Main.html">Main</a>
-            <a href="HowToPlay.html">How to Play</a>
-            <a href="PicrossPage.html">Play</a>
-            <a href="HighScores.html">High Scores</a>
-            <a href="About.html">About</a>
+            <a href="Main.html" role = "link">Main</a>
+            <a href="HowToPlay.html" role = "link">How to Play</a>
+            <a href="PicrossPage.html" role = "link">Play</a>
+            <a href="HighScores.html" role = "link">High Scores</a>
+            <a href="About.html" role = "link">About</a>
             <div class="dropdown">
-                <button class="dropbtn">Account 
+                <button class="dropbtn" role = "button">Account 
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href = "Login.html">Login</a>
-                    <a href="ProfilePage.html">View Profile</a>
-                    <a href="CreateAccount.html">Create Account</a>
+                    <a href = "Login.html" role = "link">Login</a>
+                    <a href="ProfilePage.html" role = "link">View Profile</a>
+                    <a href="CreateAccount.html" role = "link">Create Account</a>
                 </div>
             </div>
         </section>
 
         <section id = "title">
-            <h1>High Scores</h1>
+            <h1 role = "heading" aria-level = 1>High Scores</h1>
         </section>
 
         <section id="Scores">
-            <table id="mainTable">
-                <tr>
-                    <th id = "username" onclick="GetSortedData('username')">Username</th>
-                    <th id = "gridSize" onclick="GetSortedData('gridSize')">Grid Size</th>
-                    <th id = "gameDuration" onclick="GetSortedData('gameDuration')">Game Duration</th>
-                    <th id = "mistakes" onclick="GetSortedData('mistakes')">Mistakes</th>
-                    <th id = "score" onclick="GetSortedData('score')">Score</th>
+            <table id="mainTable" role = "table">
+                <tr role = "row">
+                    <th id = "username" onclick="GetSortedData('username')" role = "columnheader">Username</th>
+                    <th id = "gridSize" onclick="GetSortedData('gridSize')" role = "columnheader">Grid Size</th>
+                    <th id = "gameDuration" onclick="GetSortedData('gameDuration')" role = "columnheader">Game Duration</th>
+                    <th id = "mistakes" onclick="GetSortedData('mistakes')" role = "columnheader">Mistakes</th>
+                    <th id = "score" onclick="GetSortedData('score')" role = "columnheader">Score</th>
                 </tr>
-                <tbody id = "dynamicData">
+                <tbody id = "dynamicData" role = "rowgroup">
 
                 </tbody>
             </table>

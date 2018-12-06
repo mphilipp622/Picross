@@ -17,12 +17,15 @@ function CreateTable()
         document.getElementById("levelSection").remove();
 
     var newTable = document.createElement("table");
+    newTable.setAttribute("role", "table");
     newTable.className = "PicrossTable";
     newTable.id = "levelSection";
 
     let newTBody = document.createElement("tbody");
+    newTBody.setAttribute("role", "rowgroup");
 
     let rowHeader = document.createElement("tr");
+    rowHeader.setAttribute("role", "row");
 
     rowHeader.innerHTML += '<td class="emptyCell"></td>'; // create blank square
 
@@ -30,6 +33,7 @@ function CreateTable()
     for(let i = 0; i < grid.GetWidth(); i++)
     {
         let newData = document.createElement("td");
+        newData.setAttribute("role", "cell");
         newData.className = "NumRowTop";
         newData.style = "border-color: black;";
 
@@ -57,7 +61,9 @@ function CreateTable()
     for(let i = 0; i < grid.GetHeight(); i++) 
     {
         let newRow = document.createElement("tr");
+        newRow.setAttribute("role", "row");
         let newRowHeader = document.createElement("td");
+        newRowHeader.setAttribute("role", "cell");
         newRowHeader.className = "NumRowLeft";
 
         let rowInfo = grid.GetRowGroups(i); 
@@ -80,6 +86,7 @@ function CreateTable()
         for(let j = 0; j < grid.GetWidth(); j++)
         {
             let newCell = document.createElement("td");
+            newCell.setAttribute("role", "cell");
             newCell.className = "notRevealed";
 
             // let cellButton = document.createElement("button");
@@ -106,12 +113,15 @@ function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
     let newGrid = new GridDB(newSize, newTiles);
 
     let newTable = document.createElement("table");
+    newTable.setAttribute("role", "table");
     newTable.id = "levelSection";
     newTable.className = "PicrossTable";
 
     let newTBody = document.createElement("tbody");
+    newTBody.setAttribute("role", "rowgroup");
 
     let rowHeader = document.createElement("tr");
+    rowHeader.setAttribute("role", "row");
 
     rowHeader.innerHTML += '<td class="emptyCell"></td>'; // create blank square
 
@@ -119,6 +129,7 @@ function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
     for(let i = 0; i < newSize; i++)
     {
         let newData = document.createElement("td");
+        newData.setAttribute("role", "cell");
         newData.className = "NumRowTop";
         newData.style = "border-color: " + newTableColor + ";";
 
@@ -146,7 +157,9 @@ function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
     for(let i = 0; i < newGrid.GetHeight(); i++) 
     {
         let newRow = document.createElement("tr");
+        newRow.setAttribute("role", "row");
         let newRowHeader = document.createElement("td");
+        newRowHeader.setAttribute("role", "cell");
         newRowHeader.className = "NumRowLeft";
         newRowHeader.style = "border-color: " + newTableColor + ";";
 
@@ -170,6 +183,7 @@ function CreateTableFromDB(newSize, newTiles, newTableColor, newTileColor)
         for(let j = 0; j < newGrid.GetWidth(); j++)
         {
             let newCell = document.createElement("td");
+            newCell.setAttribute("role", "cell");
             newCell.className = "notRevealed";
             newCell.style = "border-color: " + newTableColor + ";" + "background-color: " + newTileColor + ";";
 
@@ -298,6 +312,7 @@ function UpdateGridColor()
 {
     // Note that we make use of inline styles for the TD cells so that they override the CSS styles temporarily.
     let tableDatas = document.getElementsByTagName("td");
+    tableDatas.setAttribute("role", "cell");
     
     for(let i = 0; i < tableDatas.length; i++)
         tableDatas[i].style = "border-color: " + document.getElementById("BorderColor").value + ";";

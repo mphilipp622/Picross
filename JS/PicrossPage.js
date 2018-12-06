@@ -114,7 +114,8 @@ function CreateGridFromImage()
 			for (let j = 0; j < dimension; j++) {
                 newTiles[i][j] = new Tile(i, j);
 
-				let p = getPixel(j, i);
+                let p = getPixel(j, i);
+                console.log(p);
 				let total = p[0] + p[1] + p[2] + p[3];
 				if (total >= avg) {
 					newTiles[i][j].SetIsMistake(true);

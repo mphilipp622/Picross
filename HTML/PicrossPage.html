@@ -7,26 +7,26 @@
         <link rel="stylesheet" href="../CSS/Theme.css">
         <script src = "../JS/jquery-3.3.1.min.js"></script>
     </head>
-    <body onload="LoadLevelData()">
+    <body onload="LoadLevelData()" role = "document">
         <script src="../JS/PicrossPage.js" async defer></script>
         <script src="../JS/Classes.js" async defer></script>
         <script src="../JS/PicrossTable.js" async defer></script>
        
 
         <section class="NavBar">
-            <a href="Main.html">Main</a>
-            <a href="HowToPlay.html">How to Play</a>
-            <a href="PicrossPage.html">Play</a>
-            <a href="HighScores.html">High Scores</a>
-            <a href="About.html">About</a>
+            <a href="Main.html" role = "link">Main</a>
+            <a href="HowToPlay.html" role = "link">How to Play</a>
+            <a href="PicrossPage.html" role = "link">Play</a>
+            <a href="HighScores.html" role = "link">High Scores</a>
+            <a href="About.html" role = "link">About</a>
             <div class="dropdown">
                 <button class="dropbtn">Account 
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href = "Login.html">Login</a>
-                    <a href="ProfilePage.html">View Profile</a>
-                    <a href="CreateAccount.html">Create Account</a>
+                    <a href = "Login.html" role = "link">Login</a>
+                    <a href="ProfilePage.html" role = "link">View Profile</a>
+                    <a href="CreateAccount.html" role = "link">Create Account</a>
                 </div>
             </div>
         </section>
@@ -35,14 +35,14 @@
             <div class="GridForm">
 
                 <form class="ArcadeModeSettings">
-                    <h3>Arcade Mode Settings</h3>
+                    <h3 role = "heading" aria-level = 3>Arcade Mode Settings</h3>
                     Number of Levels <br>
-                    <input type="number" id="numberOfLevels">
+                    <input type="number" id="numberOfLevels" role = "spinbutton">
                     <br>
-                    <h3>Grid Size</h3>
-                    <select id="arcadeDimension">
-                        <option value="7">7x7</option>
-                        <option value="13">13x13</option>
+                    <h3 role = "heading" aria-level = 3>Grid Size</h3>
+                    <select id="arcadeDimension" role = "combobox">
+                        <option value="7" role = "option">7x7</option>
+                        <option value="13" role = "option">13x13</option>
                     </select>
                     <br>
                     <button type="button" onclick="StartArcadeMode()">Arcade Mode</button>
@@ -50,20 +50,20 @@
                 </form>
 
                 <form class="GridDimensions">
-                    <h3>Custom Mode Settings</h3>
-                    <select id="gridDimension">
-                        <option value="7">7x7</option>
-                        <option value="13">13x13</option>
+                    <h3 role = "heading" aria-level = 3>Custom Mode Settings</h3>
+                    <select id="gridDimension" role = "combobox">
+                        <option value="7" role = "option">7x7</option>
+                        <option value="13" role = "option">13x13</option>
                     </select>
                     <br>
                     <button type="button" onclick="CreateGrid()">Create Grid</button>
                 </form>
 
                 <form class="GridImageForm">
-                    <h3>Image Mode Settings</h3>
-                    <select id="gridDimensionImage">
-                        <option value="7">7x7</option>
-                        <option value="13">13x13</option>
+                    <h3 role = "heading" aria-level = 3>Image Mode Settings</h3>
+                    <select id="gridDimensionImage" role = "combobox">
+                        <option value="7" role = "option">7x7</option>
+                        <option value="13" role = "option">13x13</option>
                     </select><br><br>
                     <input type="file" id="imageInput">
                     <input type="button" value="Choose File" id = "imageButton" onclick="document.getElementById('imageInput').click();" />
@@ -72,7 +72,7 @@
                 </form>
 
                 <form class="GridColorForm">
-                    <h3>Color Settings</h3>
+                    <h3 role = "heading" aria-level = 3>Color Settings</h3>
                     Tile Color: <input id = "TileColor" type="color" value="#808080">
                     <br>
                     Border Color: <input id="BorderColor" type="color">
@@ -102,7 +102,7 @@
             <br>
 
             <section id="SaveLoadLevel">
-                <h3>Save/Load Levels</h3>
+                <h3 role = "heading" aria-level = 3>Save/Load Levels</h3>
                 <button type = "button" onclick = "SaveLevelData()">Save Level</button><br>
                 <button type = "button" onclick = "PopulateLevelData(-1)">Previous Level</button><br>
                 <button type = "button" onclick="PopulateLevelData(1)">Next Level</button><br>

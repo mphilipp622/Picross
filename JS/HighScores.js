@@ -18,12 +18,14 @@ function PopulateTable(tableData)
     for(let i = 0; i < data.length; i++)
     {
         let newRow = document.createElement("tr");
+        newRow.setAttribute("role", "row");
         for(let key in data[i])
         {
             if(key == "gameID")
                 continue;
 
             let newTD = document.createElement("td");
+            newTD.setAttribute("role", "cell");
             newTD.innerHTML = data[i][key];
             newRow.append(newTD);
         }

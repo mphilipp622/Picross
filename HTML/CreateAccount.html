@@ -9,62 +9,62 @@
         <script src = "../JS/jquery-3.3.1.min.js"></script>
 
     </head>
-    <body>
+    <body role = "document">
         <script src="../JS/CreateAccount.js" async defer></script>
         <script src = "../JS/Login.js" async defer></script>
 
         <section class="NavBar">
-            <a href="Main.html">Main</a>
-            <a href="HowToPlay.html">How to Play</a>
-            <a href="PicrossPage.html">Play</a>
-            <a href="HighScores.html">High Scores</a>
-            <a href="About.html">About</a>
+            <a href="Main.html" role = "link">Main</a>
+            <a href="HowToPlay.html" role = "link">How to Play</a>
+            <a href="PicrossPage.html" role = "link">Play</a>
+            <a href="HighScores.html" role = "link">High Scores</a>
+            <a href="About.html" role = "link">About</a>
             <div class="dropdown">
-                <button class="dropbtn">Account 
+                <button class="dropbtn" role = "button">Account 
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href = "Login.html">Login</a>
-                    <a href="ProfilePage.html">View Profile</a>
-                    <a href="CreateAccount.html">Create Account</a>
+                    <a href = "Login.html" role = "link">Login</a>
+                    <a href="ProfilePage.html" role = "link">View Profile</a>
+                    <a href="CreateAccount.html" role = "link">Create Account</a>
                 </div>
             </div>
         </section>
 
         <section id="FormSection">
             <form>
-                <fieldset>
+                <fieldset role = "group">
                     <legend  align = "center"><h2>Create New Account</h2></legend>
 
                     <label for = "Username">Username:</label>
-                    <input type = "text" id = "Username">
+                    <input type = "text" id = "Username" role = "textbox">
 
                     <label for = "Password">Password:</label>
                     <input type = "password" id = "Password">
 
                     <label for="FirstName">First Name:</label>
-                    <input type="text" id = "FirstName"><br>
+                    <input type="text" id = "FirstName" role = "textbox"><br>
 
                     <label for="LastName">Last Name:</label>
-                    <input type="text" id = "LastName"><br>
+                    <input type="text" id = "LastName" role = "textbox"><br>
 
                     <label for="Age">Age:</label>
-                    <input type="number" id="Age"><br>
+                    <input type="number" id="Age" role = "spinbutton"><br>
 
                     <label for="Gender">Gender:</label>
-                    <select id = "Gender">
-                        <option value = "Male">Male</option>
-                        <option value = "Female">Female</option>
-                        <option value = "Other">Other</option>
+                    <select id = "Gender" role = "combobox">
+                        <option value = "Male" role = "option">Male</option>
+                        <option value = "Female" role = "option">Female</option>
+                        <option value = "Other" role = "option">Other</option>
                     </select> <br>
 
                     <label for="Location">Location:</label>
-                    <input type = "text" id="Location"><br>
+                    <input type = "text" id="Location" role = "textbox"><br>
 
                     <label for = "Avatar">Avatar:</label>
                     <input type = "file" id = "Avatar" name = "Avatar"><br>
 
-                    <button type="button" value = "Submit" onclick = "CreateNewUser()">Submit</button>
+                    <button type="button" value = "Submit" onclick = "CreateNewUser()" role = "button">Submit</button>
                 </fieldset>
             </form>
         </section>
