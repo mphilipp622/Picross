@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "csci130";
+$password = "123456";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
@@ -21,7 +21,7 @@ if(mysqli_query($conn, "SHOW DATABASES LIKE 'DBMarkPhilipp'")->num_rows == 0)
     // Create connection
     $conn = new mysqli($servername, $username, $password, "DBMarkPhilipp");
     // Create all the tables
-    $queryString = "CREATE TABLE IF NOT EXISTS Games (gameID VARCHAR(32), username VARCHAR(45), gridSize INT, gameDuration INT, mistakes INT, score INT) ENGINE=INNODB;";
+    $queryString = "CREATE TABLE IF NOT EXISTS Games (gameID VARCHAR(32), username VARCHAR(45), gridSize INT, gameDuration INT, mistakes INT, score INT, gameMode VARCHAR(45), numberOfLevels INT) ENGINE=INNODB;";
     $conn->query($queryString);
 
     // $sql = "INSERT INTO Games (gameID, username, gridSize, gameDuration, mistakes, score) 

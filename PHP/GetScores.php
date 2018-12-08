@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "csci130";
+$password = "123456";
 $dbName = "DBMarkPhilipp";
 
 // Create connection
@@ -21,12 +21,16 @@ $jsonInput = json_decode(file_get_contents('php://input'), true);
 // Execute functionality accordingly.
 if($jsonInput["function"] == "populate")
     Populate();
-else
+else if ($jsonInput["function"] == "sort")
     SortData($jsonInput["sortData"]);
+else if($jsonInput["function"] == "populateTA")
+    PopulateTA();
+else if($jsonInput["function"] == "sortTA")
+    SortDataTA($jsonInput["sortData"]);
 
 function ReturnData($queryResult)
 {
-    if ($queryResult->num_rows > 0) 
+    if ($queryResult->num_rows > 0)
     {
         $myArray = array();
         
@@ -35,7 +39,7 @@ function ReturnData($queryResult)
 
         echo json_encode($myArray);
     }
-    else 
+    else
     {
         echo "NoData";
         return;
@@ -44,7 +48,7 @@ function ReturnData($queryResult)
 
 function Populate()
 {
-    $query = "SELECT * FROM Games";
+    $query = "SELECT * FROM Games WHERE gameMode <> 'Time Attack'";
 
     $result = $GLOBALS["conn"]->query($query);
 
@@ -54,7 +58,7 @@ function Populate()
 function SortData($sortData)
 {
     // echo $sortData["gameDuration"] . "    " . $sortData["score"];
-    $query = "SELECT * FROM Games ORDER BY ";
+    $query = "SELECT * FROM Games WHERE gameMode <> 'Time Attack' ORDER BY ";
     // $sortingOrder = $_POST["order"];
 
     foreach($sortData as $key => $val) 
@@ -72,6 +76,34 @@ function SortData($sortData)
     ReturnData($result);
 }
 
+function PopulateTA()
+{
+    $query = "SELECT * FROM Games WHERE gameMode = 'Time Attack'";
 
+    $result = $GLOBALS["conn"]->query($query);
+
+    ReturnData($result);
+}
+
+function SortDataTA($sortData)
+{
+    // echo $sortData["gameDuration"] . "    " . $sortData["score"];
+    $query = "SELECT * FROM Games WHERE gameMode = 'Time Attack' ORDER BY ";
+    // $sortingOrder = $_POST["order"];
+
+    foreach($sortData as $key => $val) 
+    {
+        if($val == "none")
+            continue;
+
+        $query = $query . $key . " " . $val . ", ";
+    }
+
+    $query = rtrim($query, ', ');
+
+    $result = $GLOBALS["conn"]->query($query);
+
+    ReturnData($result);
+}
 
 ?>

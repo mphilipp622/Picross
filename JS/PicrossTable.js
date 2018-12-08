@@ -312,7 +312,6 @@ function UpdateGridColor()
 {
     // Note that we make use of inline styles for the TD cells so that they override the CSS styles temporarily.
     let tableDatas = document.getElementsByTagName("td");
-    tableDatas.setAttribute("role", "cell");
     
     for(let i = 0; i < tableDatas.length; i++)
         tableDatas[i].style = "border-color: " + document.getElementById("BorderColor").value + ";";

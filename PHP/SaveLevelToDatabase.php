@@ -18,8 +18,8 @@ else
 $jsonInput = json_decode(file_get_contents('php://input'), true);
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "csci130";
+$password = "123456";
 $dbName = "DBMarkPhilipp";
 
 // Create connection

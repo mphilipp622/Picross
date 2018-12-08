@@ -7,6 +7,8 @@ var id;
 // Game Stats
 var turns = 0;
 var mistakes = 0;
+var totalMistakes = 0;
+var totalScore = 0;
 var score = 0;
 
 var levels = []; // stores grids for a level
@@ -73,13 +75,8 @@ function CreateGridFromImage()
     
         canvas = document.createElement("canvas");
         ctx = canvas.getContext("2d");
-        // canvas.width = dimension
-        // canvas.height = dimension
-    
-        
-        //img.src = "/assets/Mario.png";
-        //img.src = "https://vignette.wikia.nocookie.net/mario/images/3/32/8_Bit_Mario.png/revision/latest?cb=20120602231304";
-        //img.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Emacs_Tetris_vector_based_detail.svg/200px-Emacs_Tetris_vector_based_detail.svg.png";
+
+        // image is saved into LevelImages as temp.jpg
         img.src = "../LevelImages/" + "temp.jpg";
     }
 
@@ -180,9 +177,13 @@ function LoadNextLevel()
 
     if(currentLevel >= levels.length)
     {
+        totalMistakes += mistakes;
+        totalScore += score;
         ChangeToVictoryColors();
         StopTimer();
         PrintVictoryMessage();
+        SaveGame();
+        isArcadeMode = false;
         return;
     }
 
@@ -242,12 +243,17 @@ function SaveGame()
 {
     let newGUID = GetGUID();
 
+    let gameMode = isArcadeMode ? "Time Attack" : "Normal";
+    let numberOfLevels = isArcadeMode ? levels.length : 1;
+
     let data = {
         "gameID" : newGUID,
         "gridSize": grid.GetWidth(),
         "gameDuration": totalTime,
-        "mistakes": mistakes,
-        "score": score
+        "mistakes": isArcadeMode ? totalMistakes : mistakes,
+        "score": isArcadeMode ? totalScore : score,
+        "gameMode" : gameMode,
+        "numberOfLevels" : numberOfLevels
     }
 
     let jsonData = JSON.stringify(data);

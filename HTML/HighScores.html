@@ -10,7 +10,7 @@
         <script src = "../JS/CheckDatabaseExists.js"></script>
 
     </head>
-    <body onload = "GetTableData()" role = "document">
+    <body onload = "LoadPage()" role = "document">
         <script src = "../JS/HighScores.js" async defer></script>
 
         <section class="NavBar">
@@ -36,18 +36,38 @@
         </section>
 
         <section id="Scores">
-            <table id="mainTable" role = "table">
-                <tr role = "row">
-                    <th id = "username" onclick="GetSortedData('username')" role = "columnheader">Username</th>
-                    <th id = "gridSize" onclick="GetSortedData('gridSize')" role = "columnheader">Grid Size</th>
-                    <th id = "gameDuration" onclick="GetSortedData('gameDuration')" role = "columnheader">Game Duration</th>
-                    <th id = "mistakes" onclick="GetSortedData('mistakes')" role = "columnheader">Mistakes</th>
-                    <th id = "score" onclick="GetSortedData('score')" role = "columnheader">Score</th>
-                </tr>
-                <tbody id = "dynamicData" role = "rowgroup">
+            <section id = "normalScores">
+                <h2>Custom Mode</h2>
+                <table id="mainTable" role = "table">
+                    <tr role = "row">
+                        <th id = "username" onclick="GetSortedData('username')" role = "columnheader">Username</th>
+                        <th id = "gridSize" onclick="GetSortedData('gridSize')" role = "columnheader">Grid Size</th>
+                        <th id = "gameDuration" onclick="GetSortedData('gameDuration')" role = "columnheader">Game Duration</th>
+                        <th id = "mistakes" onclick="GetSortedData('mistakes')" role = "columnheader">Mistakes</th>
+                        <th id = "score" onclick="GetSortedData('score')" role = "columnheader">Score</th>
+                    </tr>
+                    <tbody id = "dynamicData" role = "rowgroup">
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id = "timeAttackScores">
+                <h2>Time Attack</h2>
+                <table id="timeAttackTable" role = "table">
+                    <tr role = "row">
+                        <th id = "usernameTA" onclick="GetSortedDataTA('username')" role = "columnheader">Username</th>
+                        <th id = "gridSizeTA" onclick="GetSortedDataTA('gridSize')" role = "columnheader">Grid Size</th>
+                        <th id = "gameDurationTA" onclick="GetSortedDataTA('gameDuration')" role = "columnheader">Game Duration</th>
+                        <th id = "mistakesTA" onclick="GetSortedDataTA('mistakes')" role = "columnheader">Mistakes</th>
+                        <th id = "scoreTA" onclick="GetSortedDataTA('score')" role = "columnheader">Score</th>
+                        <th id = "numberOfLevelsTA" onclick = "GetSortedDataTA('numberOfLevels')" role = "columnheader">Number of Levels</th>
+                    </tr>
+                    <tbody id = "dynamicDataTA" role = "rowgroup">
+
+                    </tbody>
+                </table>
+            </section>
         </section>
 
     </body>

@@ -18,8 +18,8 @@ else
 $jsonInput = json_decode(file_get_contents('php://input'), true);
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "csci130";
+$password = "123456";
 $dbName = "DBMarkPhilipp";
 
 // Create connection
@@ -36,16 +36,16 @@ if (mysqli_connect_errno())
 if(!mysqli_query($conn, "DESCRIBE Games"))
 {
     // game table does not exist so insert it
-    $queryString = "CREATE TABLE IF NOT EXISTS Games (gameID VARCHAR(32), username VARCHAR(45), gridSize INT, gameDuration INT, mistakes INT, score INT) ENGINE=INNODB;";
+    $queryString = "CREATE TABLE IF NOT EXISTS Games (gameID VARCHAR(32), username VARCHAR(45), gridSize INT, gameDuration INT, mistakes INT, score INT, gameMode VARCHAR(45), numberOfLevels INT) ENGINE=INNODB;";
     $conn->query($queryString);
 }
 
 // Create the values that get inserted into SQL
 $valueString = "('" . $jsonInput['gameID'] . "', '" . $playerName . "', '" . $jsonInput['gridSize'] . "', '" . $jsonInput['gameDuration'] .
-"', '" . $jsonInput['mistakes'] . "', '" . $jsonInput['score'] . "')";
+"', '" . $jsonInput['mistakes'] . "', '" . $jsonInput['score'] . "', '" . $jsonInput['gameMode'] . "', '" . $jsonInput['numberOfLevels'] . "')";
 
 // make a query
-$sql = "INSERT INTO Games (gameID, username, gridSize, gameDuration, mistakes, score) 
+$sql = "INSERT INTO Games (gameID, username, gridSize, gameDuration, mistakes, score, gameMode, numberOfLevels) 
 VALUES " . $valueString;
 
 $result = $conn->query($sql);
