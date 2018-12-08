@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbName = "picross";
+$dbName = "DBMarkPhilipp";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbName);
@@ -44,7 +44,7 @@ function ReturnData($queryResult)
 
 function Populate()
 {
-    $query = "SELECT * FROM game";
+    $query = "SELECT * FROM Games";
 
     $result = $GLOBALS["conn"]->query($query);
 
@@ -54,7 +54,7 @@ function Populate()
 function SortData($sortData)
 {
     // echo $sortData["gameDuration"] . "    " . $sortData["score"];
-    $query = "SELECT * FROM game ORDER BY ";
+    $query = "SELECT * FROM Games ORDER BY ";
     // $sortingOrder = $_POST["order"];
 
     foreach($sortData as $key => $val) 

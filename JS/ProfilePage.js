@@ -1,5 +1,6 @@
 function GetProfileInfo()
 {
+    CheckDB();
     $.ajax({
         url : '../PHP/GetUserInfo.php', // your php file
         type : 'GET', // type of the HTTP request

@@ -20,7 +20,7 @@ $jsonInput = json_decode(file_get_contents('php://input'), true);
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbName = "picross";
+$dbName = "DBMarkPhilipp";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbName);
@@ -32,10 +32,10 @@ if (mysqli_connect_errno())
 }
 
 // Check if table exists and create it if not
-if(!mysqli_query($conn, "DESCRIBE level"))
+if(!mysqli_query($conn, "DESCRIBE Levels"))
 {
     // game table does not exist so insert it
-    $queryString = "CREATE TABLE IF NOT EXISTS level (levelID VARCHAR(32), username VARCHAR(45), width INT, height INT, tiles VARCHAR(10000), tableColor VARCHAR(45), tileColor VARCHAR(45)) ENGINE=INNODB;";
+    $queryString = "CREATE TABLE IF NOT EXISTS Levels (levelID VARCHAR(32), username VARCHAR(45), width INT, height INT, tiles VARCHAR(10000), tableColor VARCHAR(45), tileColor VARCHAR(45)) ENGINE=INNODB;";
     $conn->query($queryString);
 }
 
@@ -52,7 +52,7 @@ $valueString = "('" . $jsonInput['levelID'] . "', '" . $playerName . "', '" . $j
 
 echo $valueString;
 // make a query
-$sql = "INSERT INTO level (levelID, username, width, height, tiles, tableColor, tileColor) 
+$sql = "INSERT INTO Levels (levelID, username, width, height, tiles, tableColor, tileColor) 
 VALUES " . $valueString;
 
 $result = $conn->query($sql);

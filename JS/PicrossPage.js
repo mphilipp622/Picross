@@ -322,6 +322,7 @@ function LevelCallback ()
 
 function LoadLevelData()
 {
+    CheckDB();
     $.ajax({
         url : '../PHP/GetLevelData.php', // your php file
         type : 'GET', // type of the HTTP request

@@ -8,7 +8,7 @@ if(!isset($_SESSION))
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbName = "picross";
+$dbName = "DBMarkPhilipp";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbName);
@@ -20,7 +20,7 @@ if (mysqli_connect_errno())
 }
 
 // $_GET['username'] should give this code the currently active username on the site
-$query = "SELECT * FROM player WHERE username = '" . $_POST["username"] . "' AND password = sha1('" . $_POST["password"] . "')";
+$query = "SELECT * FROM Players WHERE username = '" . $_POST["username"] . "' AND password = sha1('" . $_POST["password"] . "')";
 // $sth = mysqli_query($conn, $query);
 $result = $conn->query($query);
 

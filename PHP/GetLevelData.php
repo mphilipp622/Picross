@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbName = "picross";
+$dbName = "DBMarkPhilipp";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbName);
@@ -15,11 +15,11 @@ if (mysqli_connect_errno())
     return;
 }
 
-$query = "SELECT * FROM level";
+$query = "SELECT * FROM Levels";
 
 $result = $conn->query($query);
 
-if ($result->num_rows > 0) 
+if ($result->num_rows > 0)
 {
     $myArray = array();
     

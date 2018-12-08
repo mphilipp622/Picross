@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbName = "picross";
+$dbName = "DBMarkPhilipp";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbName);
@@ -16,11 +16,11 @@ if (mysqli_connect_errno())
 }
 
 // Check if table exists and create it if not
-if(mysqli_query($conn, "DESCRIBE player") == false)
+if(mysqli_query($conn, "DESCRIBE Players") == false)
 {
     // game table does not exist so insert it
     echo "NO TABLE PLAYER";
-    $queryString = "CREATE TABLE IF NOT EXISTS player (username VARCHAR(45), password VARCHAR(45), firstName VARCHAR(45), lastName VARCHAR(45), age INT, gender VARCHAR(45), location VARCHAR(45)) ENGINE=INNODB;";
+    $queryString = "CREATE TABLE IF NOT EXISTS Players (username VARCHAR(45), password VARCHAR(45), firstName VARCHAR(45), lastName VARCHAR(45), age INT, gender VARCHAR(45), location VARCHAR(45)) ENGINE=INNODB;";
     $conn->query($queryString);
 }
 
@@ -37,7 +37,7 @@ $valueString = "('" . $username . "', sha1('" . $password . "'), '" . $firstName
 "', '" . $age . "', '" . $gender . "', '" . $location . "')";
 
 // make a query
-$sql = "INSERT INTO player (username, password, firstName, lastName, age, gender, location) 
+$sql = "INSERT INTO Players (username, password, firstName, lastName, age, gender, location) 
 VALUES " . $valueString;
 
 $result = $conn->query($sql);

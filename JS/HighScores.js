@@ -45,7 +45,7 @@ function ClearTable()
 function GetTableData()
 {
     // let formData = new FormData();
-
+    CheckDB();
     let sortSet = false;
 
     let json;
