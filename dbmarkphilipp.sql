@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2018 at 03:49 AM
+-- Generation Time: Dec 12, 2018 at 03:12 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -34,23 +34,39 @@ CREATE TABLE `games` (
   `gridSize` int(11) DEFAULT NULL,
   `gameDuration` int(11) DEFAULT NULL,
   `mistakes` int(11) DEFAULT NULL,
-  `score` int(11) DEFAULT NULL
+  `score` int(11) DEFAULT NULL,
+  `gameMode` varchar(45) NOT NULL,
+  `numberOfLevels` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `games`
 --
 
-INSERT INTO `games` (`gameID`, `username`, `gridSize`, `gameDuration`, `mistakes`, `score`) VALUES
-('198910ea43c33bb57aa4fc6f748b21ec', 'UserAlice', 7, 46, 2, 93),
-('f5606781d2c4009fe85a58f5dea9cf76', 'UserBob', 13, 218, 24, 72),
-('f1ff7fd8535175faab0dba15ac9b324a', 'UserBob', 7, 53, 2, 88),
-('e7ca7c6282abd642d34b9bc4346ee26e', 'UserBob', 13, 261, 23, 69),
-('5c5b7e3fdf8d8a9cb69e902c902c09b3', 'UserBob', 7, 56, 1, 96),
-('73a0a98d2d2d94af65324faff32bc356', 'UserAlice', 13, 200, 15, 82),
-('dd9902dc7ec7acc2f69bb8351c73aeb2', 'UserAlice', 7, 37, 1, 96),
-('4acd313c1fe2bc2e4c1e0b9c61da6c3f', 'UserAlice', 13, 254, 18, 76),
-('de6c818d3e61867d1a9e55752a152545', 'UserAlice', 7, 58, 5, 69);
+INSERT INTO `games` (`gameID`, `username`, `gridSize`, `gameDuration`, `mistakes`, `score`, `gameMode`, `numberOfLevels`) VALUES
+('198910ea43c33bb57aa4fc6f748b21ec', 'UserAlice', 7, 46, 2, 93, '', 0),
+('f5606781d2c4009fe85a58f5dea9cf76', 'UserBob', 13, 218, 24, 72, '', 0),
+('f1ff7fd8535175faab0dba15ac9b324a', 'UserBob', 7, 53, 2, 88, '', 0),
+('e7ca7c6282abd642d34b9bc4346ee26e', 'UserBob', 13, 261, 23, 69, '', 0),
+('5c5b7e3fdf8d8a9cb69e902c902c09b3', 'UserBob', 7, 56, 1, 96, '', 0),
+('73a0a98d2d2d94af65324faff32bc356', 'UserAlice', 13, 200, 15, 82, '', 0),
+('dd9902dc7ec7acc2f69bb8351c73aeb2', 'UserAlice', 7, 37, 1, 96, '', 0),
+('4acd313c1fe2bc2e4c1e0b9c61da6c3f', 'UserAlice', 13, 254, 18, 76, '', 0),
+('de6c818d3e61867d1a9e55752a152545', 'UserAlice', 7, 58, 5, 69, '', 0),
+('849e7df578b4d63dc7a85e8c1d0e987a', 'UserBob', 7, 73, 7, 72, 'Time Attack', 2),
+('28d9e33b9d520bd2ad20494034e6781b', 'UserBob', 7, 113, 5, 81, 'Time Attack', 3),
+('03d1b1f31833e3cb93f643ac5710112e', 'UserAlice', 7, 69, 7, 73, 'Time Attack', 2),
+('e17559eda3eade5344f41a8fd5bf954d', 'UserAlice', 13, 493, 68, 21, 'Time Attack', 2),
+('ccf2278ed83305eafe5a59e08ee16ac2', 'UserAlice', 7, 33, 1, 97, 'Normal', 1),
+('fa4100e4a5f9de6f5f2c788de40d46be', 'UserAlice', 13, 82, 15, 86, 'Normal', 1),
+('e19534197a28264248b00bd41c8845be', 'UserAlice', 13, 83, 38, 55, 'Normal', 1),
+('aed437a987a20fef2b8b389ac944275c', 'UserAlice', 13, 56, 1, 99, 'Normal', 1),
+('d5ffc05b4f1f111b7019e527970a3c15', 'UserAlice', 7, 42, 1, 95, 'Normal', 1),
+('7ad5b6dd545741c028fb97cde2325c40', 'UserAlice', 7, 48, 7, 74, 'Normal', 1),
+('6c0c1696a445728c0560d3ebd4aee722', 'UserBob', 7, 48, 6, 78, 'Normal', 1),
+('4e08a9a4cb604a235921def818c381f0', 'UserBob', 13, 226, 25, 72, 'Normal', 1),
+('83175544e256373f44cff364fc0b6134', 'UserBob', 7, 187, 14, 46, 'Time Attack', 5),
+('09906243e61889162523ccfb601bf3d0', 'csci130', 7, 108, 5, 77, 'Normal', 1);
 
 -- --------------------------------------------------------
 
